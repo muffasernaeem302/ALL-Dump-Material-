@@ -1,0 +1,251 @@
+import javafx.animation.FadeTransition;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
+public class CampusCore extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+
+        // ================= ROOT =================
+
+        StackPane root = new StackPane();
+
+        // ================= BACKGROUND IMAGE =================
+
+        Image image = new Image(
+                getClass().getResource("/images/login.png").toExternalForm()
+        );
+
+        ImageView background = new ImageView(image);        
+
+        background.setFitWidth(1400);
+        background.setFitHeight(900);
+        background.setPreserveRatio(false);
+
+        // ================= BLUR EFFECT =================
+
+        GaussianBlur blur = new GaussianBlur(18);
+        background.setEffect(blur);
+
+        // ================= DARK OVERLAY =================
+
+        Rectangle overlay = new Rectangle(1400, 900);
+
+        overlay.setFill(Color.rgb(0, 0, 0, 0.40));
+
+        // ================= LOGIN CARD =================
+
+        VBox loginCard = new VBox(20);
+
+        loginCard.setAlignment(Pos.CENTER);
+
+        loginCard.setPadding(new Insets(35));
+
+        loginCard.setMaxWidth(420);
+
+        loginCard.setStyle(
+                "-fx-background-color: rgba(255,255,255,0.15);" +
+                        "-fx-background-radius: 25;" +
+                        "-fx-border-radius: 25;" +
+                        "-fx-border-color: rgba(255,255,255,0.25);" +
+                        "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.30), 25, 0, 0, 8);"
+        );
+
+        // ================= LOGO =================
+
+        Label logo = new Label("🎓");
+
+        logo.setFont(Font.font("Arial", 65));
+
+        // ================= TITLE =================
+
+        Label title = new Label("CampusCore");
+
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 38));
+
+        title.setTextFill(Color.WHITE);
+
+        // ================= SUBTITLE =================
+
+        Label subtitle = new Label("University Management System");
+
+        subtitle.setFont(Font.font("Arial", 16));
+
+        subtitle.setTextFill(Color.LIGHTGRAY);
+
+        // ================= USERNAME FIELD =================
+
+        TextField username = new TextField();
+
+        username.setPromptText("Username");
+
+        username.setPrefHeight(48);
+
+        username.setMaxWidth(320);
+
+        username.setStyle(
+                "-fx-background-radius: 12;" +
+                        "-fx-font-size: 15px;" +
+                        "-fx-padding: 10;"
+        );
+
+        // ================= PASSWORD FIELD =================
+
+        PasswordField password = new PasswordField();
+
+        password.setPromptText("Password");
+
+        password.setPrefHeight(48);
+
+        password.setMaxWidth(320);
+
+        password.setStyle(
+                "-fx-background-radius: 12;" +
+                        "-fx-font-size: 15px;" +
+                        "-fx-padding: 10;"
+        );
+
+        // ================= ROLE BOX =================
+
+        ComboBox<String> roleBox = new ComboBox<>();
+
+        roleBox.getItems().addAll(
+                "Student",
+                "Teacher",
+                "Admin"
+        );
+
+        roleBox.setPromptText("Select Role");
+
+        roleBox.setPrefHeight(48);
+
+        roleBox.setMaxWidth(320);
+
+        roleBox.setStyle(
+                "-fx-background-radius: 12;" +
+                        "-fx-font-size: 14px;"
+        );
+
+        // ================= LOGIN BUTTON =================
+
+        Button loginBtn = new Button("Login");
+
+        loginBtn.setPrefWidth(320);
+
+        loginBtn.setPrefHeight(50);
+
+        loginBtn.setStyle(
+                "-fx-background-color: linear-gradient(to right, #2563eb, #4f46e5);" +
+                        "-fx-text-fill: white;" +
+                        "-fx-font-size: 16px;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-background-radius: 14;" +
+                        "-fx-cursor: hand;"
+        );
+
+        // ================= BUTTON ANIMATION =================
+
+        loginBtn.setOnMouseEntered(e -> {
+
+            loginBtn.setScaleX(1.05);
+            loginBtn.setScaleY(1.05);
+
+        });
+
+        loginBtn.setOnMouseExited(e -> {
+
+            loginBtn.setScaleX(1);
+            loginBtn.setScaleY(1);
+
+        });
+
+        // ================= LOGIN ACTION =================
+
+        loginBtn.setOnAction(e -> {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+            alert.setTitle("CampusCore");
+
+            alert.setHeaderText(null);
+
+            alert.setContentText("Login Successful!");
+
+            alert.showAndWait();
+
+        });
+
+        // ================= FOOTER =================
+
+        Label footer = new Label(
+                "Secure login for Students, Teachers and Admins"
+        );
+
+        footer.setTextFill(Color.WHITE);
+
+        // ================= ADD COMPONENTS =================
+
+        loginCard.getChildren().addAll(
+                logo,
+                title,
+                subtitle,
+                username,
+                password,
+                roleBox,
+                loginBtn,
+                footer
+        );
+
+        // ================= FADE ANIMATION =================
+
+        FadeTransition fade = new FadeTransition(
+                Duration.seconds(1.8),
+                loginCard
+        );
+
+        fade.setFromValue(0);
+
+        fade.setToValue(1);
+
+        fade.play();
+
+        // ================= ROOT =================
+
+        root.getChildren().addAll(
+                background,
+                overlay,
+                loginCard
+        );
+
+        // ================= SCENE =================
+
+        Scene scene = new Scene(root, 1400, 900);
+
+        primaryStage.setTitle("CampusCore");
+
+        primaryStage.setScene(scene);
+
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+
+        launch(args);
+
+    }
+}
