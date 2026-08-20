@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M. Muffaser Naeem — Full-Stack Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   M. Muffaser Naeem — Portfolio (single file)
+   Design system: "Code Window" — bold, colorful,
+   built around the chrome of an editor/terminal
+   window, since that's the developer's native frame.
+   ============================================ */
+
+:root{
+  --bg: #12101C;
+  --surface: #1C1830;
+  --surface-2: #241F3D;
+  --text: #F5F3FF;
+  --muted: #A9A2C9;
+  --magenta: #FF2E63;
+  --cyan: #08F7FE;
+  --amber: #FFD23F;
+  --green: #3DDC97;
+  --border: #34294F;
+  --radius: 14px;
+  --mono: 'JetBrains Mono', monospace;
+  --display: 'Space Grotesk', sans-serif;
+  --body: 'Inter', sans-serif;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255,46,99,0.12), transparent 45%),
+    radial-gradient(circle at 85% 10%, rgba(8,247,254,0.10), transparent 40%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  line-height: 1.6;
+  min-height: 100vh;
+  display:flex;
+  flex-direction:column;
+  animation: pagefade .5s ease both;
+}
+@keyframes pagefade{ from{ opacity:0; transform: translateY(8px); } to{ opacity:1; transform:none; } }
+
+a{ color: inherit; text-decoration:none; }
+img{max-width:100%;}
+
+.wrap{ max-width: 1080px; margin: 0 auto; padding: 0 24px; width:100%; }
+
+/* ---------- Top "tab bar" navigation ---------- */
+header.tabbar{
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(18,16,28,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.tabbar-inner{
+  max-width: 1080px; margin: 0 auto; padding: 0 24px;
+  display:flex; align-items:center; justify-content:space-between; height: 64px;
+}
+.brand{ display:flex; align-items:center; gap:10px; font-family: var(--mono); font-weight: 600; font-size: 0.95rem; white-space:nowrap; }
+.brand .dots{display:flex; gap:5px;}
+.brand .dot{width:9px; height:9px; border-radius:50%;}
+.brand .dot:nth-child(1){background:var(--magenta);}
+.brand .dot:nth-child(2){background:var(--amber);}
+.brand .dot:nth-child(3){background:var(--green);}
+.brand .path{ color: var(--muted); }
+.brand .path b{ color: var(--text); }
+
+nav.tabs{ display:flex; gap: 4px; position: relative; }
+nav.tabs a{
+  position: relative;
+  font-family: var(--mono); font-size: 0.85rem; padding: 10px 14px;
+  border-radius: 8px 8px 0 0; color: var(--muted);
+  border-bottom: 2px solid transparent;
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+nav.tabs a:hover{ color: var(--text); background: var(--surface); }
+nav.tabs a.active{ color: var(--text); border-bottom: 2px solid var(--cyan); background: var(--surface); }
+nav.tabs a.active::after{
+  content:""; position:absolute; left: 14px; right: 14px; bottom: -1px; height: 2px;
+  background: var(--cyan); border-radius: 2px; animation: tabIn .3s ease both;
+}
+@keyframes tabIn{ from{ transform: scaleX(0); } to{ transform: scaleX(1); } }
+.tab-pill::before{ content: "// "; color: var(--muted); }
+
+/* ---------- Window chrome component (signature element) ---------- */
+.window{
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; box-shadow: 0 20px 60px -20px rgba(0,0,0,0.6);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.window-bar{ display:flex; align-items:center; gap: 10px; padding: 12px 16px; background: var(--surface-2); border-bottom: 1px solid var(--border); }
+.window-bar .traffic{ display:flex; gap:7px; }
+.window-bar .traffic span{ width:11px; height:11px; border-radius:50%; display:block; }
+.window-bar .traffic span:nth-child(1){ background:#FF5F57; }
+.window-bar .traffic span:nth-child(2){ background:#FEBC2E; }
+.window-bar .traffic span:nth-child(3){ background:#28C840; }
+.window-bar .filename{ font-family: var(--mono); font-size: 0.8rem; color: var(--muted); margin-left: 6px; }
+.window-body{ padding: 28px; }
+
+/* ---------- Hero ---------- */
+main{ flex:1; }
+section{ scroll-margin-top: 80px; }
+
+.hero{ padding: 64px 0 40px; }
+
+.hero-top{ display:flex; align-items:center; gap: 28px; flex-wrap:wrap; margin-bottom: 14px; }
+
+.avatar{
+  width: 168px; height: 168px; border-radius: 28px; flex-shrink: 0;
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--display); font-weight:700; font-size: 2.6rem; color: #fff;
+  background: linear-gradient(135deg, var(--magenta), var(--cyan));
+  box-shadow: 0 20px 50px -15px rgba(255,46,99,0.5);
+  position: relative; overflow: hidden;
+  animation: avatarPulse 5s ease-in-out infinite;
+}
+.avatar::after{ content:""; position:absolute; inset:0; background: linear-gradient(135deg, rgba(255,255,255,0.25), transparent 60%); }
+@keyframes avatarPulse{ 0%,100%{ box-shadow: 0 20px 50px -15px rgba(255,46,99,0.5); } 50%{ box-shadow: 0 25px 60px -10px rgba(8,247,254,0.45); } }
+
+.eyebrow{
+  font-family: var(--mono); color: var(--cyan); font-size: 0.85rem; margin-bottom: 18px; display:inline-block;
+  padding: 5px 12px; background: rgba(8,247,254,0.08); border: 1px solid rgba(8,247,254,0.3); border-radius: 999px;
+  animation: dropIn .6s ease both;
+}
+.hero h1{
+  font-family: var(--display); font-weight: 700; font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.05; margin-bottom: 18px; letter-spacing: -0.02em;
+  animation: dropIn .6s .1s ease both;
+}
+.hero h1 .accent{ color: var(--magenta); }
+.terminal-line{ font-family: var(--mono); font-size: clamp(1rem, 2.4vw, 1.25rem); color: var(--amber); animation: dropIn .6s .2s ease both; }
+.cursor{ display:inline-block; width: 0.55em; height: 1.1em; background: var(--cyan); margin-left: 6px; vertical-align: middle; animation: blink 1s steps(1) infinite; }
+@keyframes blink{ 50%{ opacity:0; } }
+.hero p.lead{ margin-top: 22px; max-width: 560px; color: var(--muted); font-size: 1.05rem; animation: dropIn .6s .3s ease both; }
+@keyframes dropIn{ from{ opacity:0; transform: translateY(16px); } to{ opacity:1; transform:none; } }
+
+.cta-row{ margin-top: 32px; display:flex; gap: 14px; flex-wrap: wrap; animation: dropIn .6s .4s ease both; }
+.btn{
+  font-family: var(--mono); font-size: 0.9rem; padding: 13px 22px; border-radius: 9px;
+  display:inline-flex; align-items:center; gap:8px; border: 1px solid var(--border);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.btn-primary{
+  background: var(--magenta); color: #1A0610; border-color: var(--magenta); font-weight:600;
+  position:relative; overflow:hidden;
+}
+.btn-primary::before{
+  content:""; position:absolute; top:0; left:-60%; width: 50%; height:100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+  transform: skewX(-20deg); animation: shimmer 3.2s ease-in-out infinite;
+}
+@keyframes shimmer{ 0%{ left: -60%; } 50%{ left: 130%; } 100%{ left: 130%; } }
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 10px 30px -8px rgba(255,46,99,0.55); }
+.btn-ghost{ color: var(--text); }
+.btn-ghost:hover{ border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+.stats{ margin-top: 56px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; animation: dropIn .6s .5s ease both; }
+.stat{ background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.stat .num{ font-family: var(--display); font-size: 1.9rem; font-weight:700; color: var(--cyan); display:inline-block; }
+.stat .label{ font-family: var(--mono); font-size: 0.78rem; color: var(--muted); margin-top:4px; }
+
+/* ---------- Section headings ---------- */
+.section{ padding: 56px 0; }
+.section-head{ margin-bottom: 34px; }
+.section-head .eyebrow{ margin-bottom: 12px; }
+.section-head h2{ font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+
+/* ---------- Projects grid ---------- */
+.projects-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.project-window .window-bar .filename{ color: var(--text); }
+.project-tags{ display:flex; flex-wrap:wrap; gap: 8px; margin: 16px 0 20px; }
+.tag{ font-family: var(--mono); font-size: 0.75rem; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+.project-desc{ color: var(--muted); font-size: 0.95rem; margin-bottom: 6px;}
+.project-window p.project-num{ font-family: var(--mono); color: var(--amber); font-size: 0.8rem; margin-bottom: 6px; }
+.repo-link{ font-family: var(--mono); font-size: 0.85rem; color: var(--cyan); display:inline-flex; align-items:center; gap:6px; }
+.repo-link:hover{ color: var(--amber); }
+
+.project-thumb{
+  height: 160px; border-radius: 10px; margin-bottom: 18px;
+  display:flex; align-items:center; justify-content:center; font-size: 2.6rem;
+  position: relative; overflow:hidden; border: 1px solid var(--border); transition: transform .4s ease;
+}
+.project-thumb::before{ content:""; position:absolute; inset:0; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 12px); }
+.project-window:hover .project-thumb{ transform: scale(1.03); }
+.thumb-1{ background: linear-gradient(135deg, rgba(255,46,99,0.25), rgba(255,46,99,0.05)); }
+.thumb-2{ background: linear-gradient(135deg, rgba(8,247,254,0.25), rgba(8,247,254,0.05)); }
+.thumb-3{ background: linear-gradient(135deg, rgba(255,210,63,0.25), rgba(255,210,63,0.05)); }
+.thumb-4{ background: linear-gradient(135deg, rgba(61,220,151,0.25), rgba(61,220,151,0.05)); }
+.thumb-tag{ position:absolute; bottom: 10px; left: 10px; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); background: rgba(18,16,28,0.7); padding: 3px 9px; border-radius: 999px; }
+
+.project-window{ transform-style: preserve-3d; will-change: transform; }
+.project-window:hover{ box-shadow: 0 25px 60px -20px rgba(0,0,0,0.7); }
+
+/* ---------- About / skills ---------- */
+.about-grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items:start; }
+.bio p{ color: var(--muted); margin-bottom: 16px; font-size: 1.02rem; }
+.skill-bars{ margin-top: 6px; }
+.skillbar{ margin-bottom: 16px; }
+.skillbar .top{ display:flex; justify-content:space-between; font-family: var(--mono); font-size: 0.8rem; margin-bottom: 6px; color: var(--muted); }
+.skillbar .track{ height: 8px; border-radius: 999px; background: var(--surface-2); overflow:hidden; border: 1px solid var(--border); }
+.skillbar .fill{ height:100%; border-radius:999px; }
+
+/* ---------- Contact ---------- */
+.contact-window{ max-width: 640px; }
+.contact-row{ display:flex; justify-content:space-between; align-items:center; padding: 16px 0; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 0.95rem; }
+.contact-row:last-child{ border-bottom:none; }
+.contact-row .k{ color: var(--muted); }
+.contact-row .v{ color: var(--text); }
+.contact-row .v:hover{ color: var(--cyan); }
+.copy-btn{ font-family: var(--mono); font-size: 0.75rem; background: var(--surface-2); border: 1px solid var(--border); color: var(--muted); padding: 6px 10px; border-radius: 6px; cursor:pointer; }
+.copy-btn:hover{ color: var(--cyan); border-color: var(--cyan); }
+
+/* ---------- Footer ---------- */
+footer{ border-top: 1px solid var(--border); padding: 26px 0; margin-top: 40px; }
+footer .wrap{ display:flex; justify-content:space-between; align-items:center; font-family: var(--mono); font-size: 0.8rem; color: var(--muted); flex-wrap:wrap; gap: 10px; }
+footer a:hover{ color: var(--cyan); }
+
+/* ---------- Ambient blobs ---------- */
+.blob-field{ position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.blob{ position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.35; animation: float 16s ease-in-out infinite; }
+.blob.b1{ width: 360px; height: 360px; background: var(--magenta); top: -120px; left: -100px; animation-duration: 18s; }
+.blob.b2{ width: 300px; height: 300px; background: var(--cyan); top: 30%; right: -120px; animation-duration: 22s; animation-delay: -4s; }
+.blob.b3{ width: 260px; height: 260px; background: var(--amber); bottom: -100px; left: 30%; animation-duration: 20s; animation-delay: -8s; }
+@keyframes float{ 0%, 100%{ transform: translate(0,0) scale(1); } 33%{ transform: translate(30px,-40px) scale(1.08); } 66%{ transform: translate(-25px,25px) scale(0.95); } }
+
+/* ---------- Scroll reveal ---------- */
+.reveal{ opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.21,.85,.32,1), transform .7s cubic-bezier(.21,.85,.32,1); }
+.reveal.visible{ opacity: 1; transform: translateY(0); }
+.reveal-delay-1.visible{ transition-delay: .08s; }
+.reveal-delay-2.visible{ transition-delay: .16s; }
+.reveal-delay-3.visible{ transition-delay: .24s; }
+.reveal-delay-4.visible{ transition-delay: .32s; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px){
+  .tabbar-inner{ flex-direction:column; height:auto; padding: 12px 24px; gap:10px; }
+  nav.tabs{ flex-wrap:wrap; justify-content:center; }
+  .stats{ grid-template-columns: 1fr; }
+  .projects-grid{ grid-template-columns: 1fr; }
+  .about-grid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 600px){
+  .hero-top{ flex-direction:column; align-items:flex-start; }
+  .avatar{ width:120px; height:120px; font-size:2rem; }
+}
+
+/* ---------- Reduced motion & accessibility ---------- */
+@media (prefers-reduced-motion: reduce){
+  .cursor, .blob, .avatar, .btn-primary::before,
+  .eyebrow, .hero h1, .terminal-line, .hero p.lead, .cta-row, .stats, body{ animation: none !important; }
+  html{ scroll-behavior:auto; }
+  .reveal{ opacity:1; transform:none; transition:none; }
+}
+a:focus-visible, button:focus-visible{ outline: 2px solid var(--cyan); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<div class="blob-field" aria-hidden="true">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+</div>
+
+<header class="tabbar">
+  <div class="tabbar-inner">
+    <div class="brand">
+      <span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+      <span class="path">~/<b>muffaser-naeem</b></span>
+    </div>
+    <nav class="tabs">
+      <a href="#home" class="active tab-pill" data-section="home">home</a>
+      <a href="#projects" class="tab-pill" data-section="projects">projects</a>
+      <a href="#about" class="tab-pill" data-section="about">about</a>
+      <a href="#contact" class="tab-pill" data-section="contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== HOME ===== -->
+  <section id="home" class="hero wrap">
+    <div class="hero-top">
+      <div class="avatar" title="Add your photo here — replace this block with an <img> tag">MN</div>
+      <div><span class="eyebrow">$ whoami</span></div>
+    </div>
+    <h1>M. Muffaser <span class="accent">Naeem.</span></h1>
+    <p class="terminal-line" data-type="Full-Stack Web Developer — building things that run in a browser."></p>
+    <p class="lead">I design and build complete web experiences end to end — from interactive games to business sites — across HTML, CSS, JavaScript, Python, Java, and C++.</p>
+
+    <div class="cta-row">
+      <a href="#projects" class="btn btn-primary">View Projects →</a>
+      <a href="https://github.com/muffasernaeem302" class="btn btn-ghost">GitHub ↗</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num" data-count="6">0</div><div class="label">languages &amp; tools</div></div>
+      <div class="stat"><div class="num" data-count="4+">0</div><div class="label">shipped projects</div></div>
+      <div class="stat"><div class="num" data-count="100%">0</div><div class="label">full-stack, no half measures</div></div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="window reveal">
+      <div class="window-bar">
+        <span class="traffic"><span></span><span></span><span></span></span>
+        <span class="filename">featured.js</span>
+      </div>
+      <div class="window-body">
+        <p class="project-num">// currently building</p>
+        <p class="terminal-line" style="color:var(--text); font-size:1.05rem;">Interactive browser games &amp; full websites — from a <span style="color:var(--cyan)">Memory Matching Game</span> to a complete <span style="color:var(--amber)">Gym website</span>.</p>
+        <div style="margin-top:18px;"><a href="#projects" class="repo-link">see all projects →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">$ ls ./projects</span>
+      <h2>Things I've built</h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="window project-window reveal">
+        <div class="window-bar"><span class="traffic"><span></span><span></span><span></span></span><span class="filename">dev-project.html</span></div>
+        <div class="window-body">
+          <div class="project-thumb thumb-1">💻<span class="thumb-tag">add screenshot</span></div>
+          <p class="project-num">01</p>
+          <h3 style="font-family:var(--display); font-size:1.3rem; margin-bottom:10px;">Dev-Project</h3>
+          <p class="project-desc">A general-purpose development project used to build and test core web fundamentals — structure, styling, and interactivity working together.</p>
+          <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+          <a href="https://github.com/muffasernaeem302/Dev-Project-." class="repo-link">open repo →</a>
+        </div>
+      </div>
+
+      <div class="window project-window reveal reveal-delay-1">
+        <div class="window-bar"><span class="traffic"><span></span><span></span><span></span></span><span class="filename">memory-matching-game.js</span></div>
+        <div class="window-body">
+          <div class="project-thumb thumb-2">🧠<span class="thumb-tag">add screenshot</span></div>
+          <p class="project-num">02</p>
+          <h3 style="font-family:var(--display); font-size:1.3rem; margin-bottom:10px;">Memory Matching Game</h3>
+          <p class="project-desc">A browser-based memory matching game with flip animations, match logic, and score tracking — built to sharpen DOM manipulation and game-state handling.</p>
+          <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
+          <a href="https://github.com/muffasernaeem302/Memory-Matching-Game" class="repo-link">open repo →</a>
+        </div>
+      </div>
+
+      <div class="window project-window reveal reveal-delay-2">
+        <div class="window-bar"><span class="traffic"><span></span><span></span><span></span></span><span class="filename">gym-website.html</span></div>
+        <div class="window-body">
+          <div class="project-thumb thumb-3">🏋️<span class="thumb-tag">add screenshot</span></div>
+          <p class="project-num">03</p>
+          <h3 style="font-family:var(--display); font-size:1.3rem; margin-bottom:10px;">GYM Website</h3>
+          <p class="project-desc">A complete gym/fitness business website — landing page, services, and layout built to convert visitors into members.</p>
+          <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+          <a href="https://github.com/muffasernaeem302/GYM-website-Created-" class="repo-link">open repo →</a>
+        </div>
+      </div>
+
+      <div class="window project-window reveal reveal-delay-3">
+        <div class="window-bar"><span class="traffic"><span></span><span></span><span></span></span><span class="filename">game-project.js</span></div>
+        <div class="window-body">
+          <div class="project-thumb thumb-4">🎮<span class="thumb-tag">add screenshot</span></div>
+          <p class="project-num">04</p>
+          <h3 style="font-family:var(--display); font-size:1.3rem; margin-bottom:10px;">Game Project</h3>
+          <p class="project-desc">An additional browser game project exploring game loops, user input handling, and interactive logic.</p>
+          <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
+          <a href="https://github.com/muffasernaeem302/Game-Project" class="repo-link">open repo →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="margin-top:28px; color:var(--muted); font-family:var(--mono); font-size:0.85rem;">
+      // descriptions above are placeholders based on project names — edit the text directly in this file to match exactly what each project does.
+    </p>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">$ cat about.md</span>
+      <h2>About me</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="window reveal">
+        <div class="window-bar"><span class="traffic"><span></span><span></span><span></span></span><span class="filename">bio.md</span></div>
+        <div class="window-body bio">
+          <div class="avatar" style="margin-bottom:20px;" title="Add your photo here">MN</div>
+          <p>I'm <strong>M. Muffaser Naeem</strong>, a full-stack web developer who works comfortably across the entire stack — from markup and styling to logic and backend code.</p>
+          <p>I build websites and interactive applications end-to-end: landing pages, business sites like my gym website project, and browser games like my memory matching game. I enjoy taking an idea from a blank file to something people can actually click, play, and use.</p>
+          <p>Outside of web projects, I also work with Python, Java, and C++ — which means I can move between front-end polish and back-end / systems-level logic depending on what a project needs.</p>
+        </div>
+      </div>
+
+      <div class="window reveal reveal-delay-1">
+        <div class="window-bar"><span class="traffic"><span></span><span></span><span></span></span><span class="filename">skills.json</span></div>
+        <div class="window-body">
+          <div class="skill-bars">
+            <div class="skillbar"><div class="top"><span>HTML</span><span>core</span></div><div class="track"><div class="fill" style="width:95%; background:var(--magenta);"></div></div></div>
+            <div class="skillbar"><div class="top"><span>CSS</span><span>core</span></div><div class="track"><div class="fill" style="width:90%; background:var(--cyan);"></div></div></div>
+            <div class="skillbar"><div class="top"><span>JavaScript</span><span>core</span></div><div class="track"><div class="fill" style="width:88%; background:var(--amber);"></div></div></div>
+            <div class="skillbar"><div class="top"><span>Python</span><span>backend / scripting</span></div><div class="track"><div class="fill" style="width:80%; background:var(--green);"></div></div></div>
+            <div class="skillbar"><div class="top"><span>Java</span><span>backend / OOP</span></div><div class="track"><div class="fill" style="width:75%; background:var(--magenta);"></div></div></div>
+            <div class="skillbar"><div class="top"><span>C++</span><span>systems / logic</span></div><div class="track"><div class="fill" style="width:70%; background:var(--cyan);"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:20px; color:var(--muted); font-family:var(--mono); font-size:0.85rem;">
+      // skill percentages are estimates — adjust the width values above to match your actual confidence level.
+    </p>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">$ ./contact --send</span>
+      <h2>Let's build something</h2>
+    </div>
+
+    <div class="window contact-window reveal">
+      <div class="window-bar"><span class="traffic"><span></span><span></span><span></span></span><span class="filename">contact.sh</span></div>
+      <div class="window-body">
+        <div class="contact-row">
+          <span class="k">email</span>
+          <span style="display:flex; align-items:center; gap:10px;">
+            <a class="v" href="mailto:muffasernaeem302@gmail.com">muffasernaeem302@gmail.com</a>
+            <button class="copy-btn" data-copy="muffasernaeem302@gmail.com">copy</button>
+          </span>
+        </div>
+        <div class="contact-row"><span class="k">github</span><a class="v" href="https://github.com/muffasernaeem302">github.com/muffasernaeem302</a></div>
+        <div class="contact-row"><span class="k">role</span><span class="v">Full-Stack Web Developer</span></div>
+        <div class="contact-row"><span class="k">status</span><span class="v" style="color:var(--green);">open to work</span></div>
+      </div>
+    </div>
+
+    <p style="margin-top:24px; color:var(--muted); max-width:560px;">
+      Have a project in mind, or just want to talk web dev? Email is the fastest way to reach me — I'll get back to you as soon as I can.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 M. Muffaser Naeem</span>
+    <span><a href="https://github.com/muffasernaeem302">github.com/muffasernaeem302</a> · <a href="mailto:muffasernaeem302@gmail.com">muffasernaeem302@gmail.com</a></span>
+  </div>
+</footer>
+
+<script>
+function typeLine(el, text, speed){
+  if(!el) return;
+  let i = 0;
+  el.textContent = "";
+  const cursor = document.createElement("span");
+  cursor.className = "cursor";
+  function step(){
+    if(i <= text.length){
+      el.textContent = text.slice(0, i);
+      el.appendChild(cursor);
+      i++;
+      setTimeout(step, speed);
+    }
+  }
+  step();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const typeTarget = document.querySelector("[data-type]");
+  if(typeTarget){
+    typeLine(typeTarget, typeTarget.getAttribute("data-type"), 45);
+  }
+
+  document.querySelectorAll("[data-copy]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const val = btn.getAttribute("data-copy");
+      navigator.clipboard.writeText(val).then(() => {
+        const original = btn.textContent;
+        btn.textContent = "copied!";
+        setTimeout(() => { btn.textContent = original; }, 1500);
+      });
+    });
+  });
+
+  document.querySelectorAll(".skillbar .fill").forEach(bar => {
+    const target = bar.style.width;
+    bar.style.width = "0%";
+    requestAnimationFrame(() => {
+      setTimeout(() => { bar.style.transition = "width 1s ease"; bar.style.width = target; }, 100);
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window && revealEls.length){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add("visible"));
+  }
+
+  // Animated counters
+  document.querySelectorAll("[data-count]").forEach(el => {
+    const raw = el.getAttribute("data-count");
+    const numMatch = raw.match(/[\d.]+/);
+    if(!numMatch) return;
+    const target = parseFloat(numMatch[0]);
+    const suffix = raw.replace(numMatch[0], "");
+    let started = false;
+    const run = () => {
+      if(started) return;
+      started = true;
+      const duration = 1200;
+      const startTime = performance.now();
+      function tick(now){
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const val = (target * eased);
+        el.textContent = (target % 1 === 0 ? Math.round(val) : val.toFixed(1)) + suffix;
+        if(progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    };
+    if("IntersectionObserver" in window){
+      const counterIo = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if(entry.isIntersecting){ run(); counterIo.unobserve(entry.target); } });
+      }, { threshold: 0.4 });
+      counterIo.observe(el);
+    } else { run(); }
+  });
+
+  // Tilt effect on project cards
+  document.querySelectorAll(".project-window").forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`;
+    });
+    card.addEventListener("mouseleave", () => { card.style.transform = ""; });
+  });
+
+  // Scroll-spy nav highlighting
+  const navLinks = document.querySelectorAll("nav.tabs a");
+  const sections = Array.from(navLinks).map(a => document.getElementById(a.getAttribute("data-section")));
+  if("IntersectionObserver" in window){
+    const spyIo = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          navLinks.forEach(a => a.classList.remove("active"));
+          const link = document.querySelector(`nav.tabs a[data-section="${entry.target.id}"]`);
+          if(link) link.classList.add("active");
+        }
+      });
+    }, { rootMargin: "-40% 0px -50% 0px", threshold: 0 });
+    sections.forEach(s => { if(s) spyIo.observe(s); });
+  }
+});
+</script>
+</body>
+</html>
