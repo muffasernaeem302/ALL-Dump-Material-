@@ -109,14 +109,67 @@ console.log(color);*/
 
 // }
 
-let Gamenum = 50 ;
+// let Gamenum = 50 ;
 
-let user=prompt( " Guess the correct Num ");
+// let user=prompt( " Guess the correct Num ");
 
-while ( Gamenum != user)
+// while ( Gamenum != user)
+// {
+//    user = prompt ( " Guess the number Again . Wrong guess ");
+
+// }
+
+// console .log (" Congraulations . You guessed it correctly ");
+
+
+// === loops END ;================;
+
+
+//============ARRAYS ===================;
+
+
+
+// let marks = [ 10 , 20 , 30 , 40 ];
+// console.log( marks );
+// console.log( marks.length );
+
+// for ( let i = 0 ; i < marks.length ; i++)
+// {
+//    console.log( marks[i]);
+// }
+
+// for( let mark of marks)
+// {
+//    console.log(mark)
+// }
+
+
+// let marks = [ 10 , 20 , 30 , 40 , 50 ];
+
+// let sum = 0;
+
+// for( let i = 0 ; i < marks.length ; i++)
+// {
+//  sum = sum + marks[i];
+
+// }
+//  console .log( sum );
+//  let average ;
+
+//  average = sum / marks.length ;
+//   console .log( ` the value of the average =${average} `)
+
+
+let value =[ 10 , 30 , 50 ]
+
+let index = 0 ;
+
+for ( let i = 0 ; i < value.length ; i ++ )
 {
-   user = prompt ( " Guess the number Again . Wrong guess ");
+console.log ( " The value of Index = ", index , " Value = ", value[i]);
+index++;
+ let offer = value[i] / 10 ; 
+value[i] = value[i] - offer ;
 
+console.log ( " The value of the item now = ", value[i] )
 }
-
-console .log (" Congraulations . You guessed it correctly ");
