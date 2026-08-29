@@ -160,16 +160,79 @@ console.log(color);*/
 //   console .log( ` the value of the average =${average} `)
 
 
-let value =[ 10 , 30 , 50 ]
+// let value =[ 10 , 30 , 50 ]
 
-let index = 0 ;
+// let index = 0 ;
 
-for ( let i = 0 ; i < value.length ; i ++ )
+// for ( let i = 0 ; i < value.length ; i ++ )
+// {
+// console.log ( " The value of Index = ", index , " Value = ", value[i]);
+// index++;
+//  let offer = value[i] / 10 ; 
+// value[i] = value[i] - offer ;
+
+// console.log ( " The value of the item now = ", value[i] )
+// }
+
+// // concat ; 
+// //  slice ;
+// // spilce();
+// // pop ;
+// // push ;
+
+
+// function cat(x, y )
+// {
+//    console.log( " My name is mUffaser naeem");
+//  let sum = x+ y ;
+//  return sum ;
+
+// }
+//  let summy = cat(1 , 3);
+//  console.log( summy)
+
+
+// let arr =[ 10 , 20 , 30]
+
+// arr.forEach( function printval(val)
+// {
+//    console.log(val);
+// })
+
+// let arr =[ 10 , 20 , 30]
+
+// arr.forEach((val) =>
+// {
+//    console.log(val* val );
+// })
+
+
+// reduce ( start , end ); 
+
+
+//  let button = document.getElementById("myid");
+//  console.dir(button);
+
+//  let element =document.querySelector("div")
+//  console.dir(element );
+
+// let h2 = document.querySelector("h2");
+// console.dir(h2);
+
+
+// let newBtn = document.createElement( "Button");
+// newBtn.innerText =" Click me ";
+
+// newBtn.style.color = "white";
+// newBtn.style.backgroundColor= "red";
+
+// document.querySelector("body").prepend(newBtn);
+
+// let para = document.querySelector("p");
+ let btn1 = document.querySelector("#btn1");
+ 
+btn1.addEventListener("click", ()=>
 {
-console.log ( " The value of Index = ", index , " Value = ", value[i]);
-index++;
- let offer = value[i] / 10 ; 
-value[i] = value[i] - offer ;
+   console.log("Button was Clicked - Handler 2 ");
 
-console.log ( " The value of the item now = ", value[i] )
-}
+})
