@@ -2,221 +2,342 @@
 
 using namespace std;
 
-
-// TASK 1 ;
-
-int factorial(int Num )
+struct Node
 {
-    int sum = 0;
-    int Result  = 1 ;
+    int info;
+    Node* next;
+};
 
- for (int i = 1 ; i <= Num; i++ )
- {
-     Result  = Result * i;
- }
- return Result;
+// INSERTION AT START :
 
+void insertAtStart (Node*& list, int x)
+{
+    Node* p = new Node;
+
+    p->info = x;
+    p->next = list;
+
+    list = p;
 }
 
-// TASK 2 ;
+// INSERTION AT END :
 
-int fibbonacci(int n){
-int a1 = 0 ;
-int b1 = 1 ;
-int Next ;
-
-
-for ( int i = 0 ; i < n ; i ++)
+void insertAtEnd(Node*& list, int x)
 {
-   cout << " a " <<"="<<a1 << endl;
-    cout <<endl;
+    Node* p = new Node;
 
-    Next = a1 + b1;
-    a1 = b1 ;
-    b1 = Next ;
+    p->info = x;
+    p->next = NULL;
+
+    if(list == NULL)
+    {
+        list = p;
+    }
+    else
+    {
+        Node* q = list;
+
+        while (q->next != NULL)
+        {
+            q = q->next;
+        }
+        q->next = p;
+    }
 }
-return Next;
+
+// DELETION AT START :
+
+void DeletionAtStart(Node*& list)
+{
+    if (list == NULL)
+    {
+        cout << "No need to Delete" << endl;
+    }
+    else
+    {
+        Node* p = list;
+
+        list = p->next;
+        delete p;
+    }
+}
+
+// DELETION AT END :
+
+void DeletionAtEnd(Node*& list)
+{
+    if(list == NULL)
+    {
+        cout << "NO Thing To Delete Here." << endl;
+    }
+    else if (list->next == NULL)
+    {
+        delete list;
+        list = NULL;
+    }
+    else
+    {
+        Node* p = list;
+        Node* q = list->next;
+
+        while(q->next != NULL)
+        {
+            p = q;
+            q = q->next;
+        }
+        p->next = NULL;
+
+        delete q;
+    }
+}
+
+// REVERSE USING LOOP :
+
+void reverseUsingLoop(Node*& list)
+{
+    Node* previous = NULL;
+    Node* current = list;
+    Node* nextnode;
+
+    while(current != NULL)
+    {
+        nextnode = current->next; // save data
+        current->next = previous; // reverse list
+
+        previous = current; // move prev forward
+        current = nextnode; // move curr forward
+    }
+
+    list = previous;
+    cout << "List Reversed Using LOOP" << endl;
+}
+
+// REVERSE USING RECURSION :
+void reverseUsingRecursion(Node*& list)
+{
+    if(list == NULL || list->next == NULL)
+    {
+        return;
+    }
+
+    Node* rest = list->next;
+
+    reverseUsingRecursion(rest);
+
+    list->next->next = list;
+    list->next = NULL;
+    list = rest;
+}
+
+// MERGE 2 LINKED LISTS AND GENERATE A THIRD ONE :
+Node* mergeLists(Node* list1, Node* list2)
+{
+    Node* mergedList = NULL;
+
+    // Copy elements of list1 into mergedList
+    Node* p = list1;
+    while (p != NULL)
+    {
+        insertAtEnd(mergedList, p->info);
+        p = p->next;
+    }
+
+    // Copy elements of list2 into mergedList
+    Node* q = list2;
+    while (q != NULL)
+    {
+        insertAtEnd(mergedList, q->info);
+        q = q->next;
+    }
+
+    return mergedList;
+}
+
+// REMOVE MULTIPLE (CONSECUTIVE) OCCURRENCES OF A NUMBER :
+void removeDuplicates(Node*& list)
+{
+    if (list == NULL)
+    {
+        cout << "List is empty!" << endl;
+        return;
+    }
+
+    Node* current = list;
+
+    while (current != NULL && current->next != NULL)
+    {
+        if (current->info == current->next->info)
+        {
+            Node* duplicate = current->next;
+            current->next = current->next->next; // Bypass the duplicate node
+            delete duplicate; // Free memory
+        }
+        else
+        {
+            current = current->next; // Move forward only if values differ
+        }
+    }
+    cout << "Consecutive duplicate occurrences removed successfully!" << endl;
+}
+
+// DISPLAY :
+
+void Display(Node* list)
+{
+    Node* p = list;
+    while(p != NULL)
+    {
+        cout << p->info << " -> ";
+        p = p->next;
+    }
+    cout << "NULL" << endl;
 }
 
 
 int main()
 {
-    cout<<" LAB TASKS : " <<endl;
-    int TASK ;
-    cout <<" ENTER ONE for TASK 1  " << endl;
-    cout <<" ENTER TWO for TASK 2  " << endl;
-    cout <<" ENTER THREE for TASK 3  " << endl;
-    cout <<" ENTER FOUR for TASK 4  " << endl;
-    cout <<" ENTER FIFTH for TASK 5  " << endl;
-    cout <<" ENTER SIXTH for TASK 6  " << endl;
+    Node* list = NULL;
 
-    cin >> TASK;
+    int choice;
+    int value;
 
-  if(TASK == 1) {
-cout <<" Here We Will do our FIRST  Task "<< endl;
+    do
+    {
+        cout << " ===== LINKED LIST ==========" << endl;
 
- int Number ;
+        cout << " =============================" << endl;
+        cout << " 1 . Insert at Start" << endl;
+        cout << " 2 . Insert At End" << endl;
 
-cout << " Enter the Number u wanna take the factorial "<< endl;
+        cout << "========================" << endl;
+        cout << " 3 . Delete At Start" << endl;
+        cout << " 4 . Delete At End" << endl;
 
- cin >> Number ;
+        cout << "========================" << endl;
+        cout << " 5 . Display LIST" << endl;
 
-int Ans = factorial(Number);
+        cout << "========================" << endl;
+        cout << " 6 . Reverse Using LOOP" << endl;
+        cout << " 7 . Reverse Using Recursion" << endl;
 
-cout << "Number of factorial = " << Ans << endl;
+        cout << " HERE WE ADD THE ADDITIONAL FUNCTIONS AS WE GUIDED : "<< endl;
 
-  }
+             cout << "========================" << endl;
 
+        cout << " 8 . Merge Two Lists into a Third One" << endl;
+        cout << " 9 . Remove Multiple Occurrences (Duplicates)" << endl;
+        cout << " 0 . Exit" << endl;
+        cout << "========================" << endl;
+        cout << endl;
 
-if(TASK==2)
-{
+        cout << "Enter Your choice To run the TASK: ";
+        cin >> choice;
 
-
-   cout <<" FIBBONACCI SEQUENCE "<<endl;
-
-cout <<" Here We Will do our SECOND Task "<< endl;
-
-int n = 10 ;
-
-int Next1 = fibbonacci(n);
-
-cout <<" The fibboNacci sequence of the Numbers are "<< Next1<<endl;
-}
-}
-/*
-    if(TASK == 3 )
+        switch(choice)
         {
-cout << " GREATEST OF ALL AMONG "<< endl;
+        case 1:
+            cout << "Enter value TO Add it in Start: " << endl;
+            cin >> value;
+            insertAtStart(list, value);
+            break;
 
-cout <<"  Here We Will do our Third Task " << endl;
+        case 2:
+            cout << "Enter Value to ADD it in the END: " << endl;
+            cin >> value;
+            insertAtEnd(list, value);
+            break;
 
-int num1 ;
-cout <<" Enter the Digit :"<< endl;
+        case 3:
+            DeletionAtStart(list);
+            break;
 
-cin >> num1 ;
-int num2 ;
-cout <<" Enter the Digit :"<< endl;
-cin>> num2 ;
-int num3 ;
-cout <<" Enter the Digit :"<< endl;
-cin >> num3 ;
+        case 4:
+            DeletionAtEnd(list);
+            break;
 
+        case 5:
+            cout << "Here we'll Display the List: " << endl;
+            Display(list);
+            cout << endl << endl << endl;
+            break;
 
-int result ;
+        case 6:
+            cout << "The Output is Reversed using Loop. PRESS 5 to Check" << endl;
+            reverseUsingLoop(list);
+            break;
 
-if ( num1 > num2&& num1 > num3 )
-{
-    result = num1 ;
-}
- if( num2 > num1 && num2 > num3 )
-{
-result = num2 ;
+        case 7:
+            cout << "The Output is Reversed using Recursion. PRESS 5 to Check" << endl;
+            reverseUsingRecursion(list);
+            break;
 
-}
-if( num3 > num2 && num3 > num1 )
-{
-    result = num3;
-}
+        case 8:
+        {
+            // Checks if your main list is empty first
+            if (list == NULL) {
+                cout << "\n[Warning] Your main list is empty! Please insert some elements into it first (using Options 1 or 2).\n" << endl;
+                break;
+            }
 
-cout <<" The Greatest Among ALL IS GIVEN :" << result << endl;
+            Node* list2 = NULL;
+            int n2, val;
 
-cout <<"GREATEST COMMON DIVISOR "<<endl;
+            cout << "\n--- Creating Second List ---" << endl;
+            cout << "Enter number of elements for List 2: ";
+            cin >> n2;
+            for (int i = 0; i < n2; i++) {
+                cout << "Enter value " << i + 1 << ": ";
+                cin >> val;
+                insertAtEnd(list2, val);
+            }
+
+            cout << "\nList 1 (Your Current Main List): ";
+            Display(list);
+            cout << "List 2: ";
+            Display(list2);
+
+            // Generate the third merged list using your main list as list1
+            Node* thirdList = mergeLists(list, list2);
+
+            cout << "\n----------------------------------------" << endl;
+            cout << ">>> MERGED (THIRD) LIST OUTPUT: ";
+            Display(thirdList);
+            cout << "----------------------------------------" << endl;
+
+            char makeActive;
+            cout << "Do you want to make this merged list your main active list? (y/n): ";
+            cin >> makeActive;
+            if (makeActive == 'y' || makeActive == 'Y') {
+                list = thirdList;
+                cout << "Success! Merged list is now your main active list.\n" << endl;
+            } else {
+                cout << "Merged list displayed successfully.\n" << endl;
+            }
+            break;
         }
 
-        if (TASK ==4 )
+        case 9:
         {
+            cout << "\n--- Original List Before Removing Duplicates ---" << endl;
+            Display(list);
 
-cout <<"  Here We Will do our Fourth Task " << endl;
+            removeDuplicates(list);
 
-int a ;
-int b ;
-
-cout<< " Enter the Both Digits One by One "<< endl;
-
-cin >> a;
- cout << " Second Digit "<< endl;
-
-cin >> b ;
-
-while ( b != 0 )
-{
-    int reminder = a % b;
-    a = b ;
-    b = reminder ;
-}
- cout <<" The Greatest common Divisor "<<a  << endl;
-
-
-        }
-        if (TASK == 5)
-        {
- cout <<" LEAST COMMON DIVISOR "<<endl;
-
-
- cout <<"  Here We Will do our Fifth Task " << endl;
-
-int a2 ;
-int b2 ;
-
-cout<< " Enter the Both Digits One by One "<< endl;
-
-cin >> a2;
-cout << " Second Digit "<< endl;
-
-cin >> b2 ;
-
- int LCM ;
- LCM = ( a2 * b2);
-while ( b2 != 0 )
-{
-    int reminder = a2 % b2;
-    a2 = b2 ;
-    b2 = reminder ;
-}
- cout <<" The Greatest common Divisor "<< a2  << endl;
-
-LCM = LCM/ a2 ;
-
-cout <<" The Lcm of the Given NUM is = "<< LCM << endl;
-
+            cout << ">>> LIST AFTER REMOVING DUPLICATES: ";
+            Display(list);
+            cout << endl;
+            break;
         }
 
+        case 0:
+            cout << "Program Ended" << endl;
+            break;
 
-   if (TASK == 6)
-   {
-    cout <<"  Here We Will do our SIXTH Task " << endl;
-      cout <<" FIND THE REEVRSE OF DIGITS "<< endl;
-      int Number1 ;
-      int Rev = 0 ;
-      int count = 0 ;
+        default:
+            cout << "invalid Choice!" << endl;
+        }
 
-      cout <<" ENTER THE NUMBER "<<endl;
+    } while (choice != 0);
 
-      cin >> Number1;
-/*
-      int rev1 = Number1 % 10;
-
-      int rev2 =Number1/10;
-
-      cout <<" The REv of the Num = "<< rev1<<rev2 << endl;
-
-while (Number1 > 0 )
-{
-    int digit = Number1 % 10 ;
-
-    Rev = Rev * 10 + digit ;
-
-    Number1 = Number1 / 10 ;
-
-    count++;
-
+    return 0;
 }
-cout <<" The Reverse of the Given Number = " << Rev<< endl;
-cout << " THE Total NUMBERS OF DIGITS ARE = "<< count << endl;
-
-
-   }
-
-}
-*/
-
