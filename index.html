@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en" class="stage-gaps-x is-3d" style="--s: 1.0533333333333332; --fx: 201.60000000000002px; --fy: 5.684341886080802e-14px; --ps: 1.185;"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muffaser Naeem — Software Developer & AI Engineer</title>
+  <link rel="icon" type="image/png" href="minhngo-space/assets/favicon.png">
+  <link rel="apple-touch-icon" href="minhngo-space/assets/apple-touch-icon.png">
+  <meta name="description" content="Muffaser Naeem — Software Developer & AI Engineer based in Lahore, Pakistan. COMSATS University student building full-stack apps, AI tools, and developer utilities. Open the box to explore projects, case studies, and more.">
+  <link rel="preconnect" href="fonts-googleapis-com/">
+  <link rel="preconnect" href="fonts-gstatic-com/" crossorigin="">
+  <link href="fonts-googleapis-com/css2" rel="stylesheet">
+  <link rel="stylesheet" href="minhngo-space/style.css">
+  <script>
+    // hide the illustrated desk until we know whether the 3D desk can run,
+    // so the flat pictures never flash before the 3D scene appears
+    document.documentElement.classList.add('is-booting');
+    // phones held upright get a tall desk layout (1080 × 2160 design frame)
+    window.PORTRAIT_MQ = matchMedia('(max-width: 640px) and (orientation: portrait)');
+    if (window.PORTRAIT_MQ.matches) document.documentElement.classList.add('is-portrait');
+    window.scene3dReady = new Promise((r) => {
+      const finish = (ok) => { document.documentElement.classList.remove('is-booting'); r(ok); };
+      window.__scene3dDone = finish;
+      setTimeout(() => finish(false), 6000); // safety net if the 3D script never loads
+    });
+  </script>
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+  </script>
+  <script type="module" src="minhngo-space/scene3d.js"></script>
+</head>
+<body>
+
+  <!-- =====================================================
+       DESK SCENE (1440 × 900 design frame)
+       ===================================================== -->
+  <main class="stage" id="stage" style="transform: translate(106.8px, 0px) scale(1.185);"><canvas data-engine="three.js r160" class="scene3d" aria-hidden="true" width="1920" height="948" style="display: block; left: -90.1266px; top: 0px; width: 1620.25px; height: 800px;"></canvas><div class="scene-vignette" style="left: -90.1266px; top: 0px; width: 1620.25px; height: 800px;"></div>
+
+    <!-- desk items (stacking order = Figma layer order) -->
+    <div class="layer monitor"><div class="art"><img src="minhngo-space/assets/desk/monitor.png" alt=""></div></div>
+    <div class="layer desk-item tea" style="--dx: 4.73px; --dy: -2.21px; --rot: -0.46deg;"><div class="art"><img src="minhngo-space/assets/desk/tea.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item pencil" style="--dx: -5.43px; --dy: 1.35px; --rot: 1.03deg;"><div class="art"><img src="minhngo-space/assets/desk/pencil.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item greenbook" style="--dx: -4.72px; --dy: 2.17px; --rot: 0.73deg;"><div class="art"><img src="minhngo-space/assets/desk/greenbook.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item pen" style="--dx: -5.55px; --dy: 2.59px; --rot: 0.84deg;"><div class="art"><img src="minhngo-space/assets/desk/pen.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item purplebook" style="--dx: 5.22px; --dy: 2.15px; --rot: -0.75deg;"><div class="art"><img src="minhngo-space/assets/desk/purplebook.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item airpods" style="--dx: 3.39px; --dy: 2.21px; --rot: -1.07deg;"><div class="art"><img src="minhngo-space/assets/desk/airpods.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item bud1" style="--dx: 3.46px; --dy: 1.81px; --rot: -1.13deg;"><div class="art"><img src="minhngo-space/assets/desk/bud1.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item bud2" style="--dx: 4.70px; --dy: 2.25px; --rot: -0.15deg;"><div class="art"><img src="minhngo-space/assets/desk/bud2.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item glasses" style="--dx: 2.81px; --dy: 3.73px; --rot: -0.86deg;"><div class="art"><img src="minhngo-space/assets/desk/glasses.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item usb" style="--dx: -2.75px; --dy: -1.62px; --rot: -0.36deg;"><div class="art"><img src="minhngo-space/assets/desk/usb.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item clip1" style="--dx: -5.23px; --dy: -2.25px; --rot: -0.41deg;"><div class="art"><img src="minhngo-space/assets/desk/clip1.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item clip2" style="--dx: -3.94px; --dy: -1.39px; --rot: 0.98deg;"><div class="art"><img src="minhngo-space/assets/desk/clip2.png" alt=""><div class="hit"></div></div></div>
+    <div class="layer desk-item clip3" style="--dx: -3.59px; --dy: 1.88px; --rot: -0.57deg;"><div class="art"><img src="minhngo-space/assets/desk/clip3.png" alt=""><div class="hit"></div></div></div>
+
+    <!-- navigation on the monitor screen -->
+    <nav class="nav" aria-label="Main">
+      <span class="nav__brand" id="homeBtn" role="button" tabindex="0" title="Back to the closed box">Muffaser Naeem</span>
+      <button class="nav__link nav__profile" data-open="about">Profile</button>
+      <div class="nav__projects">
+        <button class="nav__link" aria-haspopup="true" aria-expanded="false" id="projectsToggle">
+          Projects
+          <svg class="nav__chev" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2l6 6 6-6"></path></svg>
+        </button>
+        <div class="dropdown" role="menu">
+          <button role="menuitem" data-open="projects">Featured Projects (Interactive Showcase)</button>
+          <button role="menuitem" data-open="vault">GitHub Repository Vault (All Repos)</button>
+          <button role="menuitem" data-open="apps">AI &amp; Machine Learning</button>
+          <button role="menuitem" data-open="brand">Web &amp; Developer Tools</button>
+          <button role="menuitem" data-open="camera">Content Creator Projects</button>
+        </div>
+      </div>
+      <a class="nav__link nav__contact" href="https://www.linkedin.com/in/muffaser-naeem-943475382/" id="contactLink" target="_blank" rel="noopener">Contact</a>
+    </nav>
+
+    <!-- back to the closed box (shown once it is open) -->
+    <button class="rebox" id="rebox" type="button">close the box</button>
+
+    <!-- the box -->
+    <div class="box-shadow is-dropping" id="boxShadow"></div>
+    <div class="box is-landed" id="box">
+      <div class="layer tray"><img src="minhngo-space/assets/box/tray.png" alt=""></div>
+
+      <div class="layer obj obj--phone" data-key="apps" style="--i:1; --tilt:4deg">
+        <div class="art"><img src="minhngo-space/assets/box/phone.png" alt=""><img class="obj__hover" src="minhngo-space/assets/box/phone-hover.png" alt=""><div class="hit" role="button" tabindex="-1" aria-label="AI and machine learning projects"></div></div>
+        <p class="obj__label" aria-hidden="true">AI &amp; Machine<br>Learning</p>
+      </div>
+      <div class="layer obj obj--swatch" data-key="projects" style="--i:3; --tilt:5deg">
+        <div class="art"><img src="minhngo-space/assets/box/swatch.png" alt=""><img class="obj__hover" src="minhngo-space/assets/box/swatch-hover.png" alt=""><div class="hit" role="button" tabindex="-1" aria-label="Featured Projects Interactive Showcase"></div></div>
+        <p class="obj__label" aria-hidden="true">Featured<br>projects</p>
+      </div>
+      <div class="layer obj obj--folder" data-key="vault" style="--i:2; --tilt:3deg">
+        <div class="art"><img src="minhngo-space/assets/box/folder.png" alt=""><img class="obj__hover" src="minhngo-space/assets/box/folder-hover.png" alt=""><div class="hit" role="button" tabindex="-1" aria-label="GitHub Open Source Vault"></div></div>
+        <p class="obj__label" aria-hidden="true">GitHub<br>Vault</p>
+      </div>
+      <div class="layer obj obj--camera" data-key="camera" style="--i:0; --tilt:-3deg">
+        <div class="art"><img src="minhngo-space/assets/box/camera.png" alt=""><img class="obj__hover" src="minhngo-space/assets/box/camera-hover.png" alt=""><div class="hit" role="button" tabindex="-1" aria-label="Content creator projects"></div></div>
+        <p class="obj__label" aria-hidden="true">Content creator<br>projects</p>
+      </div>
+      <div class="layer obj obj--idcard" data-key="about" style="--i:4; --tilt:-2deg">
+        <div class="art"><img src="minhngo-space/assets/box/idcard.png" alt=""><img class="obj__hover" src="minhngo-space/assets/box/idcard-hover.png" alt=""><div class="hit" role="button" tabindex="-1" aria-label="About me"></div></div>
+        <p class="obj__label" aria-hidden="true">About me</p>
+      </div>
+      <div class="layer obj obj--brand" data-key="brand" style="--i:5; --tilt:-6deg">
+        <div class="art"><img src="minhngo-space/assets/box/brand.png" alt=""><img class="obj__hover" src="minhngo-space/assets/box/brand-hover.png" alt=""><div class="hit" role="button" tabindex="-1" aria-label="Web and developer tools"></div></div>
+        <p class="obj__label" aria-hidden="true">Web &amp; Dev<br>Tools</p>
+      </div>
+
+      <div class="layer lid" id="lid">
+        <img src="minhngo-space/assets/box/lid.png" alt="">
+        <svg class="lid-deco" viewBox="0 0 919 567" aria-hidden="true" focusable="false">
+          <!-- small hand-drawn stickers around the title -->
+          <g class="stk lid-sticker lid-sticker--cursor" transform="translate(118 112) rotate(-8)">
+            <path class="sticker-edge" d="M-35 -45 Q-39 -50 -34 -53 L35 -39 Q42 -37 39 -30 L10 34 Q6 42 0 35 L-35 -45Z"></path>
+            <path d="M-27 -40 L30 -29 L5 -10 L14 13 L3 18 L-8 -4 L-24 13 Z" fill="#9a39ff" stroke="#fff" stroke-width="4" stroke-linejoin="round"></path>
+            <path d="M-17 -31 L-6 -27" fill="none" stroke="#efc8ff" stroke-width="3" stroke-linecap="round"></path>
+            <circle cx="-19" cy="-19" r="2" fill="#fff"></circle>
+          </g>
+          <g class="stk lid-sticker lid-sticker--cat" transform="translate(102 292) rotate(-7)">
+            <path class="sticker-edge" d="M-70 31 Q-79 22 -70 12 L-61 -24 Q-59 -34 -49 -29 L-30 -45 Q-23 -50 -16 -42 L5 -43 Q15 -43 19 -34 L38 -38 Q49 -40 52 -28 L67 -14 Q74 -7 67 2 L74 23 Q77 34 65 38 L-57 43 Q-70 43 -70 31Z"></path>
+            <path d="M-54 25 L-50 -13 L-27 -5 L-12 -20 L1 -4 L23 -11 L36 4 L51 -1 L58 25 Q8 38 -54 25Z" fill="#f3a342" stroke="#3b2926" stroke-width="4" stroke-linejoin="round"></path>
+            <path d="M-49 -12 L-50 -33 L-31 -20 M13 -14 L29 -34 L34 -8" fill="#fff4e8" stroke="#3b2926" stroke-width="4" stroke-linejoin="round"></path>
+            <path d="M-31 13 Q-27 9 -23 13 M25 12 Q29 8 33 12 M-13 22 Q0 32 13 22" fill="none" stroke="#342523" stroke-width="3.5" stroke-linecap="round"></path>
+            <path d="M-18 17 L-12 14 L-6 17 L-12 21Z" fill="#d95e73"></path>
+            <path d="M-43 21 l-16 -5 M-42 26 l-17 2 M43 20 l15 -6 M43 26 l17 2" fill="none" stroke="#3b2926" stroke-width="2.5" stroke-linecap="round"></path>
+            <path d="M-52 -16 Q-30 -34 -8 -18" fill="none" stroke="#e85c43" stroke-width="5" stroke-linecap="round"></path>
+          </g>
+          <g class="stk lid-sticker lid-sticker--avatar" transform="translate(806 196) rotate(7)">
+            <path class="sticker-edge" d="M-54 -54 Q-48 -69 -32 -66 Q-18 -81 0 -70 Q19 -81 34 -66 Q53 -67 56 -48 Q72 -33 62 -16 Q72 2 60 17 Q68 34 52 46 Q46 65 27 61 Q12 76 -4 67 Q-24 76 -36 61 Q-58 63 -61 43 Q-76 30 -64 11 Q-75 -6 -61 -22 Q-68 -41 -54 -54Z"></path>
+            <defs>
+              <clipPath id="avatarStickerClip"><path d="M-48 -48 Q-42 -60 -29 -58 Q-17 -70 -1 -62 Q15 -71 28 -58 Q45 -59 47 -43 Q60 -31 52 -16 Q60 -2 50 12 Q57 27 43 37 Q39 52 23 49 Q10 62 -4 55 Q-21 62 -31 49 Q-49 51 -51 34 Q-64 23 -54 8 Q-64 -6 -53 -19 Q-58 -35 -48 -48Z"></path></clipPath>
+            </defs>
+            <image href="https://avatars.githubusercontent.com/u/262732549?v=4" x="-66" y="-66" width="132" height="132" preserveAspectRatio="xMidYMid slice" clip-path="url(#avatarStickerClip)"></image>
+            <path d="M-48 -48 Q-42 -60 -29 -58 Q-17 -70 -1 -62 Q15 -71 28 -58 Q45 -59 47 -43 Q60 -31 52 -16 Q60 -2 50 12 Q57 27 43 37 Q39 52 23 49 Q10 62 -4 55 Q-21 62 -31 49 Q-49 51 -51 34 Q-64 23 -54 8 Q-64 -6 -53 -19 Q-58 -35 -48 -48Z" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"></path>
+          </g>
+          <g class="stk lid-sticker lid-sticker--dev" transform="translate(820 462) rotate(10)">
+            <circle class="sticker-edge" r="52"></circle>
+            <circle r="42" fill="#151518" stroke="#ff6a2a" stroke-width="3"></circle>
+            <path d="M-21 -10 L-32 0 L-21 10 M21 -10 L32 0 L21 10 M8 -17 L-7 18" fill="none" stroke="#ff7137" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <text x="0" y="34" text-anchor="middle" fill="#f6f1e8" font-size="12" letter-spacing="2">BUILD</text>
+          </g>
+          <!-- shipping label -->
+          <g class="stk" transform="translate(84 436) rotate(-3)">
+            <rect width="236" height="80" rx="6" fill="#f6f3ee"></rect>
+            <rect x="8" y="8" width="220" height="64" rx="3" fill="none" stroke="#141518" stroke-width="1.5" stroke-dasharray="4 3"></rect>
+            <path d="M28 54 V26 M20 34 l8 -9 8 9 M44 54 V26 M36 34 l8 -9 8 9" fill="none" stroke="#ff5a1f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <text x="64" y="36" font-size="12.5" letter-spacing="1" fill="#141518">HANDLE WITH CARE</text>
+            <text x="64" y="54" font-size="10" letter-spacing="1.2" fill="#6b6b70" font-weight="500">CREATIVE GOODS INSIDE</text>
+            <path d="M64 62 h1.5 M68 62 h3 M73 62 h1.5 M77 62 h4 M83 62 h1.5 M87 62 h2.5 M92 62 h1.5 M96 62 h4 M102 62 h1.5 M106 62 h3 M111 62 h1.5 M115 62 h2.5 M120 62 h4 M126 62 h1.5 M130 62 h3 M135 62 h1.5 M139 62 h4 M145 62 h1.5 M149 62 h2.5 M154 62 h1.5 M158 62 h4 M164 62 h1.5 M168 62 h3 M173 62 h1.5 M177 62 h2.5 M182 62 h4 M188 62 h1.5 M192 62 h3 M197 62 h1.5 M201 62 h4 M207 62 h1.5 M211 62 h3" stroke="#141518" stroke-width="6"></path>
+          </g>
+          <!-- doodles -->
+          <g class="ink">
+            <path d="M560 112 l0 -18 M551 103 l18 0"></path>
+            <path d="M598 84 q4 10 13 12 q-9 2 -13 12 q-4 -10 -13 -12 q9 -2 13 -12 Z"></path>
+          </g>
+        </svg>
+        <h1 class="scribble scribble--name">Muffaser’s</h1>
+        <p class="scribble scribble--title">Portfolio</p>
+        <div class="layer note">
+          <div class="art note__paper"><img src="minhngo-space/assets/box/note.png" alt=""></div>
+          <svg class="note__tape" viewBox="0 0 331 286" aria-hidden="true">
+            <path d="M57 63 l37 15 -18 44 -39 -16z" fill="#f2eee8" fill-opacity=".72"></path>
+            <path d="M225 37 l53 -7 6 29 -54 9z" fill="#f2eee8" fill-opacity=".72"></path>
+          </svg>
+          <p class="scribble scribble--note">Press to<br>OPEN</p>
+        </div>
+        <div class="hit" role="button" tabindex="0" aria-label="Press to open the portfolio box"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =====================================================
+       OVERLAY + MODALS (same 1440 × 900 frame)
+       ===================================================== -->
+  <div class="overlay" id="overlay">
+    <div class="frame">
+
+                        <!-- About me ⇄ Experience -->
+      <section class="modal" data-modal="about" aria-label="About me">
+        <div class="pop profile">
+          <div class="profile__inner">
+
+            <article class="face about">
+              <h2 class="about__head" style="margin:0">Software &amp; AI Developer</h2>
+              <img class="about__abs about__photo" src="https://avatars.githubusercontent.com/u/262732549?v=4" alt="Muffaser Naeem's GitHub profile avatar">
+
+              <p class="about__abs about__row about__name" style="margin:0"><b>Name:</b> Muffaser Naeem</p>
+              <p class="about__abs about__row about__age" style="margin:0"><b>Location:</b> Lahore, Pakistan</p>
+              <p class="about__abs about__row about__edu" style="margin:0"><b>Education:</b> COMSATS University Islamabad</p>
+              <ul class="about__abs about__list about__list--l">
+                <li>Full-Stack &amp; AI Dev</li>
+                <li>Open-source builder</li>
+              </ul>
+              <ul class="about__abs about__list about__list--r">
+                <li>Civic AI &amp; Dev Tools</li>
+                <li>Hackathon builder</li>
+              </ul>
+
+              <p class="about__abs about__label about__tools-label" style="margin:0">Tools:</p>
+              <div class="about__abs about__icons">
+                <span>TypeScript</span>
+                <span>Python</span>
+                <span>JavaScript</span>
+                <span>C++</span>
+              </div>
+
+              <p class="about__abs about__label about__social-label" style="margin:0">Social</p>
+              <div class="about__abs about__social">
+                <a href="https://github.com/muffasernaeem302" data-link="github" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/muffaser-naeem-943475382/" data-link="linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+              </div>
+
+              <p class="about__abs about__bio">Software Developer and AI Engineer based in Lahore, studying at COMSATS University. I build practical, open-source projects on GitHub&mdash;from civic intelligence platforms (FixMyCity) and AI assistants (DentalAI) to client-side media engines (OMNI) and deep learning models (Mini-GPT). Let's connect on LinkedIn!</p>
+
+              <div class="about__abs about__more">
+                <button class="linkish" data-flip="exp">
+                  <span>view experience &amp; skills</span>
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h14M11 4l6 6-6 6"></path></svg>
+                </button>
+              </div>
+            </article>
+
+            <article class="face exp" aria-label="Experience">
+              <div class="exp__scroll">
+                
+                <div class="exp__job">
+                  <div class="exp__when">
+                    <h3>Education</h3>
+                    <p>2024 &ndash; Present</p>
+                    <p style="font-size:14px; opacity:0.8;">Lahore, Pakistan</p>
+                  </div>
+                  <div>
+                    <h3>COMSATS University Islamabad</h3>
+                    <ul>
+                      <li><b>Degree:</b> BS in Computer Science &mdash; Currently Enrolled (Batch 29).</li>
+                      <li><b>Relevant Coursework:</b> Data Structures &amp; Algorithms, Object-Oriented Programming (C++/Java), Database Systems, Artificial Intelligence Fundamentals, and Software Engineering.</li>
+                      <li><b>Academic Focus:</b> Practical software engineering, algorithmic efficiency, system design, and applied deep learning.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp__job">
+                  <div class="exp__when">
+                    <h3>GitHub</h3>
+                    <p>Open Source</p>
+                    <p style="font-size:14px; opacity:0.8;">7+ Public Repos</p>
+                  </div>
+                  <div>
+                    <h3>Open-Source Projects &amp; Contributions</h3>
+                    <ul>
+                      <li><b>FixMyCity (Civic AI &amp; Hackathon):</b> Civic reporting platform with computer vision classification and geospatial de-duplication (~70% reduction in duplicate reports).</li>
+                      <li><b>DentalAI Bot (Clinical Assistant):</b> Conversational AI triage system with medical safety guardrails and multi-turn symptom memory.</li>
+                      <li><b>Mini-GPT (Transformer Research):</b> From-scratch PyTorch transformer language model exploring causal self-attention, layer normalization, and tokenization.</li>
+                      <li><b>Developer Tools:</b> Built Git Pulse Finder (ecosystem analytics), OMNI Compression (client-side WASM engine), TypeFlow (offline-first speed trainer), and VibeSync (Spotify mood clustering).</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp__job">
+                  <div class="exp__when">
+                    <h3>LinkedIn</h3>
+                    <p>Professional</p>
+                    <p style="font-size:14px; opacity:0.8;">Open to Roles</p>
+                  </div>
+                  <div>
+                    <h3>Software Engineering &amp; AI Focus</h3>
+                    <ul>
+                      <li><b>Profile:</b> Software Developer and AI Engineer passionate about end-to-end product development and learning by shipping real software.</li>
+                      <li><b>Engineering Philosophy:</b> Writing clean, modular, and maintainable code with clear documentation and intuitive UX.</li>
+                      <li><b>Availability:</b> Open to software engineering internships, junior developer roles, and impactful collaborative projects (remote &amp; on-site).</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp__job">
+                  <div class="exp__when">
+                    <h3>Tech Stack</h3>
+                    <p>Competencies</p>
+                    <p style="font-size:14px; opacity:0.8;">Tools &amp; Paradigms</p>
+                  </div>
+                  <div>
+                    <h3>Languages, Frameworks &amp; Tools</h3>
+                    <ul>
+                      <li><b>Languages:</b> TypeScript, Python, JavaScript (ES2024+), C++, SQL, HTML5 / CSS3.</li>
+                      <li><b>AI &amp; Data:</b> PyTorch, Transformers, Computer Vision (CNNs), NLP, Vector Clustering, Prompt Engineering, OpenAI APIs.</li>
+                      <li><b>Frontend &amp; Backend:</b> Modern Vanilla JS, React, Three.js, Canvas 2D, WebAssembly (WASM), FastAPI, Node.js, REST APIs, OAuth 2.0 PKCE.</li>
+                      <li><b>Tools &amp; Workflow:</b> Git, GitHub, VS Code, Postman, Linux CLI, Figma.</li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <button class="back" data-flip="about">
+          <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M26 15H5M13 7l-8 8 8 8"></path></svg>
+          back
+        </button>
+        <button class="pop close about-close" data-close="" style="--d:2" aria-label="Close">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"><path d="M4 4l34 34M38 4L4 38"></path></svg>
+        </button>
+      </section>
+
+            <!-- AI and machine learning projects -->
+      <section class="modal" data-modal="apps" aria-label="AI and machine learning projects">
+        <div class="pop github-projects">
+          <h2>AI &amp; Machine Learning</h2>
+          <p class="github-projects__intro">Production-grade AI applications and deep learning research &mdash; built from foundational principles to solve genuine healthcare, civic, and natural language challenges.</p>
+          <div class="github-project-grid">
+
+            <!-- FixMyCity -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/FIX-MY-CITY-PROJECT-HACKATHON" target="_blank" rel="noopener">
+              <span class="github-project__type">Civic AI Platform &middot; Hackathon Project</span>
+              <h3>FixMyCity</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">Python</span>
+                <span class="github-project-tag">FastAPI</span>
+                <span class="github-project-tag">Computer Vision</span>
+                <span class="github-project-tag">JavaScript</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">What It Does</span>
+                <p>Empowers citizens to report urban infrastructure issues (potholes, burst pipelines, broken lighting, sanitation hazards) via quick photo upload. Eliminates municipal paperwork by automating triage and dispatch.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">How I Made It &amp; Architecture</span>
+                <p>Engineered a FastAPI Python backend coupled with a computer vision pipeline for automated image classification and urgency estimation. Built geospatial coordinate clustering combined with image hashing to automatically merge duplicate citizen reports, routing prioritized work orders directly to municipal department queues.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Key Engineering Highlights</span>
+                <ul>
+                  <li>Reduces duplicate reports by ~70% using geo-clustering and visual hashing</li>
+                  <li>Instant issue categorization with automated ward boundary dispatch</li>
+                </ul>
+              </div>
+              <span class="github-project__link">View repository on GitHub <span>↗</span></span>
+            </a>
+
+            <!-- DentalAI -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/DENTAL-AI-BOT-" target="_blank" rel="noopener">
+              <span class="github-project__type">Clinical AI Assistant &middot; Full-Stack</span>
+              <h3>DentalAI Bot</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">TypeScript</span>
+                <span class="github-project-tag">Python</span>
+                <span class="github-project-tag">NLP / LLMs</span>
+                <span class="github-project-tag">Clinical Triage</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">What It Does</span>
+                <p>An intelligent oral-health conversational assistant providing immediate, clinically-grounded guidance, symptom evaluation, patient education, and urgent referral warnings for dental patients.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">How I Made It &amp; Architecture</span>
+                <p>Designed a TypeScript conversational frontend integrated with a Python NLP backend querying structured dental knowledge bases. Implemented multi-turn dialogue memory and rigorous triage guardrails to detect high-risk symptoms (facial swelling, acute trauma) and prioritize emergency protocols over general advice.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Key Engineering Highlights</span>
+                <ul>
+                  <li>Strict clinical guardrails preventing unqualified medical prescriptions</li>
+                  <li>Real-time response streaming with symptom pill suggestions</li>
+                </ul>
+              </div>
+              <span class="github-project__link">View repository on GitHub <span>↗</span></span>
+            </a>
+
+            <!-- Mini-GPT -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/Mini_-GPT" target="_blank" rel="noopener">
+              <span class="github-project__type">Generative AI &middot; Transformer Research</span>
+              <h3>Mini-GPT</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">Python</span>
+                <span class="github-project-tag">PyTorch</span>
+                <span class="github-project-tag">Causal Attention</span>
+                <span class="github-project-tag">CUDA</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">What It Does</span>
+                <p>A from-scratch deep learning implementation of a Generative Pre-trained Transformer (GPT) language model, built without third-party LLM frameworks to investigate and master transformer mechanics.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">How I Made It &amp; Architecture</span>
+                <p>Constructed decoder-only transformer blocks in PyTorch: multi-head causal self-attention, learnable positional and token embeddings, layer normalization, residual skip-connections, and GELU feed-forward networks. Built custom tokenization, AdamW training with cosine learning rate schedules, and autoregressive generation with temperature and top-k sampling.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Key Engineering Highlights</span>
+                <ul>
+                  <li>100% written in PyTorch from mathematical fundamentals</li>
+                  <li>Autoregressive sampling with temperature &amp; top-k controls</li>
+                </ul>
+              </div>
+              <span class="github-project__link">View repository on GitHub <span>↗</span></span>
+            </a>
+
+          </div>
+        </div>
+        <button class="pop close apps-close" data-close="" style="--d:2" aria-label="Close">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"><path d="M4 4l34 34M38 4L4 38"></path></svg>
+        </button>
+      </section>
+
+            <!-- Featured GitHub projects -->
+      <section class="modal" data-modal="projects" aria-label="Featured GitHub projects">
+        <div class="pop project-showcase">
+          <div class="project-showcase__device" aria-label="Choose a project">
+            <div class="project-showcase__screen">
+              <span class="project-showcase__island" aria-hidden="true"></span>
+              <p class="project-showcase__device-label">MUFFASER <span>&middot;</span> PROJECTS</p>
+              <div class="project-showcase__grid" role="group" aria-label="Featured projects">
+                
+                <button class="project-showcase__app is-selected" type="button" aria-pressed="true" 
+                  data-title="FixMyCity" 
+                  data-kind="Civic AI &middot; Hackathon" 
+                  data-subtitle="Automated civic issue reporting, computer-vision triage &amp; municipal dispatch" 
+                  data-does="A civic intelligence web platform that empowers citizens to report urban infrastructure failures (potholes, water leaks, broken street lighting, hazardous waste) directly to municipal authorities by uploading a single photo and brief note. The system eliminates bureaucratic latency and duplicate reports." 
+                  data-how="Built a FastAPI Python backend coupled with a computer vision pipeline for automated image classification and urgency estimation. Built geospatial coordinate clustering combined with image hashing to automatically merge duplicate citizen reports, routing prioritized work orders directly to municipal department queues." 
+                  data-highlights="Reduces duplicate citizen filings by ~70% via geo-radius and visual similarity clustering|Automated ticket dispatch mapping detected issues directly to municipal department queues|Responsive mobile-first submission interface with geolocation capture" 
+                  data-stack="JavaScript &middot; Python &middot; FastAPI &middot; Computer Vision &middot; Geolocation API" 
+                  data-role="Lead Full-Stack &amp; AI Architect" 
+                  data-repo="https://github.com/muffasernaeem302/FIX-MY-CITY-PROJECT-HACKATHON">
+                  <span class="project-showcase__icon project-showcase__icon--city" aria-hidden="true">FC</span>
+                  <span class="project-showcase__app-name">FixMyCity</span>
+                </button>
+
+                <button class="project-showcase__app" type="button" aria-pressed="false" 
+                  data-title="DentalAI Bot" 
+                  data-kind="Clinical AI Assistant" 
+                  data-subtitle="Intelligent oral-health conversational assistant with safety guardrails" 
+                  data-does="A specialized AI conversational assistant designed to bridge the gap between dental symptoms and patient understanding. It provides immediate, clinically grounded oral-health guidance, symptom assessment, hygiene recommendations, and dental terminology clarification." 
+                  data-how="Built an asynchronous conversational engine in TypeScript with a Python backend that parses natural language queries, classifies user concerns, and matches them with vetted dental knowledge bases. Engineered strict triage heuristics and system prompt guardrails to identify red-flag dental emergencies (e.g. facial swelling, severe trauma) and prioritize clinical referrals." 
+                  data-highlights="Engineered safety guardrails preventing unqualified medical prescriptions while delivering accurate health literacy|Multi-turn context retention for evaluating evolving symptom timelines|Interactive chat interface with quick-reply symptom suggestion pills" 
+                  data-stack="TypeScript &middot; Python &middot; NLP / LLMs &middot; REST APIs &middot; Clinical Triage" 
+                  data-role="Full-Stack &amp; AI Prompt Engineer" 
+                  data-repo="https://github.com/muffasernaeem302/DENTAL-AI-BOT-">
+                  <span class="project-showcase__icon project-showcase__icon--dental" aria-hidden="true">D</span>
+                  <span class="project-showcase__app-name">DentalAI</span>
+                </button>
+
+                <button class="project-showcase__app" type="button" aria-pressed="false" 
+                  data-title="Git Pulse Finder" 
+                  data-kind="Developer Intelligence Tool" 
+                  data-subtitle="Instant GitHub ecosystem analytics, developer metrics &amp; repo visualizer" 
+                  data-does="A developer productivity web application that provides real-time analytics, repository breakdowns, language distributions, and commit insights for any GitHub profile or organization without requiring manual page navigation." 
+                  data-how="Integrated the GitHub REST v3 API with optimized asynchronous requests (Promise.all), implementing client-side request caching and rate-limit tracking to deliver instant search experiences. Implemented client-side statistical aggregations calculating language percentages, repository popularity metrics, and activity timelines without server overhead." 
+                  data-highlights="Zero external frameworks &mdash; 100% vanilla modern JavaScript for maximum performance and sub-100ms response times|Instant client-side multi-filter across repositories by language, stars, and recency|Client-side caching layer minimizing redundant GitHub API calls" 
+                  data-stack="JavaScript (ES2024) &middot; GitHub REST API v3 &middot; CSS3 Grid/Flexbox &middot; Async/Await" 
+                  data-role="Frontend &amp; API Integration Developer" 
+                  data-repo="https://github.com/muffasernaeem302/Git-Pulse-Finder-Website">
+                  <span class="project-showcase__icon project-showcase__icon--pulse" aria-hidden="true">&lt;/&gt;</span>
+                  <span class="project-showcase__app-name">Git Pulse</span>
+                </button>
+
+                <button class="project-showcase__app" type="button" aria-pressed="false" 
+                  data-title="OMNI Compression" 
+                  data-kind="Media Optimization Engine" 
+                  data-subtitle="Browser-native image &amp; video compression with client-side WebAssembly" 
+                  data-does="A modern client-side media compression and format conversion utility. It enables developers, content creators, and everyday users to drastically reduce image and video file sizes (often 60–85% reduction) right in their browser without uploading sensitive media to remote third-party servers." 
+                  data-how="Built with TypeScript leveraging HTML5 Canvas 2D API for high-performance pixel manipulation, bicubic scaling, and quality-controlled JPEG/WebP encoding. Integrated WebAssembly multimedia compilation for multithreaded client-side video frame transcoding and bitrate adjustment without server dependencies, managing memory via URL.revokeObjectURL()." 
+                  data-highlights="100% client-side execution guaranteeing complete privacy &mdash; media never leaves the user's browser|Multithreaded Web Worker architecture keeping the main UI thread completely fluid at 60fps|Real-time split-screen visual diff slider allowing users to inspect compression fidelity before saving" 
+                  data-stack="TypeScript &middot; HTML5 Canvas API &middot; WebAssembly (WASM) &middot; Web Workers &middot; FileSystem API" 
+                  data-role="Systems &amp; Media Processing Developer" 
+                  data-repo="https://github.com/muffasernaeem302/OMNI-COMPRESSION-">
+                  <span class="project-showcase__icon project-showcase__icon--omni" aria-hidden="true">O</span>
+                  <span class="project-showcase__app-name">OMNI</span>
+                </button>
+
+                <button class="project-showcase__app" type="button" aria-pressed="false" 
+                  data-title="VibeSync" 
+                  data-kind="Music Intelligence &middot; Productivity" 
+                  data-subtitle="Spotify library acoustic feature analysis &amp; automated mood clustering" 
+                  data-does="An intelligent music curation tool that interfaces with Spotify to analyze the mathematical audio characteristics of user libraries and automatically curates harmonious playlists grouped by mood, tempo, energy, and acoustic properties." 
+                  data-how="Implemented OAuth 2.0 with Proof Key for Code Exchange (PKCE) for secure token-based authorization entirely within the client. Queried Spotify's audio analysis endpoints to extract multi-dimensional metrics (valence, energy, danceability, acousticness, tempo) and developed heuristic clustering algorithms to group complementary tracks into distinct mood buckets with one-click batch sync." 
+                  data-highlights="Implemented secure client-side OAuth 2.0 PKCE authentication requiring zero server secrets|Multidimensional acoustic distance clustering across valence, energy, and tempo matrices|One-click batch playlist synchronization with automatic duplicate track prevention" 
+                  data-stack="TypeScript &middot; Spotify Web API &middot; OAuth 2.0 PKCE &middot; Vector Clustering &middot; Asynchronous Architecture" 
+                  data-role="Lead Full-Stack Developer" 
+                  data-repo="https://github.com/muffasernaeem302/Vibe_Sync">
+                  <span class="project-showcase__icon project-showcase__icon--vibe" aria-hidden="true">V</span>
+                  <span class="project-showcase__app-name">VibeSync</span>
+                </button>
+
+                <button class="project-showcase__app" type="button" aria-pressed="false" 
+                  data-title="Mini-GPT" 
+                  data-kind="Generative AI &middot; Transformer Architecture" 
+                  data-subtitle="From-scratch autoregressive language model implementation in PyTorch" 
+                  data-does="An authentic, from-scratch deep learning implementation of a Generative Pre-trained Transformer (GPT) language model. Built to demonstrate and study the foundational mechanics of generative AI, attention mechanisms, and autoregressive text generation." 
+                  data-how="Implemented decoder-only transformer blocks in PyTorch without high-level abstractions: multi-head causal self-attention, scaled dot-product attention matrices, learnable token and positional embedding tables, and layer normalization layers. Trained on custom story datasets with cross-entropy loss and AdamW optimizer with cosine learning rate scheduling." 
+                  data-highlights="100% written in PyTorch from mathematical fundamentals &mdash; no third-party transformer wrappers|Autoregressive text generation with customizable temperature scaling and top-k sampling|CUDA acceleration support for high-throughput GPU training and generation" 
+                  data-stack="Python &middot; PyTorch &middot; Causal Self-Attention &middot; CUDA GPU &middot; Tokenization" 
+                  data-role="Deep Learning Researcher &amp; Author" 
+                  data-repo="https://github.com/muffasernaeem302/Mini_-GPT">
+                  <span class="project-showcase__icon project-showcase__icon--gpt" aria-hidden="true">GPT</span>
+                  <span class="project-showcase__app-name">Mini-GPT</span>
+                </button>
+
+              </div>
+              <p class="project-showcase__device-hint">Tap any icon on the device to inspect the project</p>
+            </div>
+          </div>
+
+          <!-- Project Detail Showcase Card -->
+          <article class="project-showcase__details" aria-live="polite">
+            <p class="project-showcase__eyebrow">FEATURED GITHUB PROJECT <span aria-hidden="true">&middot;</span> <span id="showcaseKind">Civic AI &middot; Hackathon</span></p>
+            <h2 id="showcaseTitle">FixMyCity</h2>
+            <p class="project-showcase__subtitle" id="showcaseSubtitle">Automated civic issue reporting, computer-vision triage &amp; municipal dispatch</p>
+            
+            <div class="project-showcase__section">
+              <h3 class="project-showcase__section-title">What It Does</h3>
+              <p class="project-showcase__section-text" id="showcaseDoes">A civic intelligence web platform that empowers citizens to report urban infrastructure failures (potholes, water leaks, broken street lighting, hazardous waste) directly to municipal authorities by uploading a single photo and brief note. The system eliminates bureaucratic latency and duplicate reports.</p>
+            </div>
+
+            <div class="project-showcase__section">
+              <h3 class="project-showcase__section-title">How I Made It &amp; Architecture</h3>
+              <p class="project-showcase__section-text" id="showcaseHow">Built a FastAPI Python backend coupled with a computer vision pipeline for automated image classification and urgency estimation. Built geospatial coordinate clustering combined with image hashing to automatically merge duplicate citizen reports, routing prioritized work orders directly to municipal department queues.</p>
+            </div>
+
+            <div class="project-showcase__section">
+              <h3 class="project-showcase__section-title">Key Engineering Highlights</h3>
+              <ul class="project-showcase__highlights" id="showcaseHighlights">
+                <li>Reduces duplicate citizen filings by ~70% via geo-radius and visual similarity clustering</li>
+                <li>Automated ticket dispatch mapping detected issues directly to municipal department queues</li>
+                <li>Responsive mobile-first submission interface with geolocation capture</li>
+              </ul>
+            </div>
+
+            <dl class="project-showcase__facts">
+              <div><dt>Category:</dt><dd id="showcaseCategory">Civic AI &middot; Hackathon</dd></div>
+              <div><dt>Technologies:</dt><dd id="showcaseStack">JavaScript &middot; Python &middot; FastAPI &middot; Computer Vision &middot; Geolocation API</dd></div>
+              <div><dt>Engineering Focus:</dt><dd id="showcaseRole">Lead Full-Stack &amp; AI Architect</dd></div>
+              <div><dt>Platform:</dt><dd>GitHub Open Source</dd></div>
+            </dl>
+            <a class="project-showcase__repo" id="showcaseRepo" href="https://github.com/muffasernaeem302/FIX-MY-CITY-PROJECT-HACKATHON" target="_blank" rel="noopener">View project on GitHub <span aria-hidden="true">↗</span></a>
+            <a class="project-showcase__all" href="https://github.com/muffasernaeem302?tab=repositories" target="_blank" rel="noopener">Browse all repositories on GitHub <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <button class="pop close projects-close" data-close="" style="--d:3" aria-label="Close">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"><path d="M4 4l34 34M38 4L4 38"></path></svg>
+        </button>
+      </section>
+
+      <!-- GitHub Open-Source Repository Vault -->
+      <section class="modal" data-modal="vault" aria-label="GitHub Open-Source Repository Vault">
+        <div class="pop github-projects">
+          <div class="vault-hero">
+            <div>
+              <h2>GitHub Repository Vault</h2>
+              <p class="github-projects__intro" style="margin-bottom:0;">A complete directory of all public open-source repositories, developer tools, AI research experiments, and contributions authored by Muffaser Naeem.</p>
+            </div>
+            <a class="vault-hero__btn" href="https://github.com/muffasernaeem302?tab=repositories" target="_blank" rel="noopener">
+              <span>View Profile on GitHub</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div class="github-project-grid">
+
+            <!-- 1. FixMyCity -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/FIX-MY-CITY-PROJECT-HACKATHON" target="_blank" rel="noopener">
+              <span class="github-project__type">Civic AI Platform &middot; Hackathon Project</span>
+              <h3>FIX-MY-CITY-PROJECT-HACKATHON</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">Python</span>
+                <span class="github-project-tag">FastAPI</span>
+                <span class="github-project-tag">Computer Vision</span>
+                <span class="github-project-tag">JavaScript</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Repository Overview</span>
+                <p>AI-assisted municipal infrastructure reporting platform. Analyzes citizen photos, estimates urgency scores, clusters duplicate reports, and automatically dispatches tasks to city departments.</p>
+              </div>
+              <span class="github-project__link"><span>View on GitHub</span> <span>↗</span></span>
+            </a>
+
+            <!-- 2. DentalAI Bot -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/DENTAL-AI-BOT-" target="_blank" rel="noopener">
+              <span class="github-project__type">Healthcare AI &middot; Conversational Bot</span>
+              <h3>DENTAL-AI-BOT-</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">TypeScript</span>
+                <span class="github-project-tag">Python</span>
+                <span class="github-project-tag">NLP / LLMs</span>
+                <span class="github-project-tag">Medical Guardrails</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Repository Overview</span>
+                <p>Specialized clinical triage assistant providing conversational oral health guidance, symptom evaluation, patient education, and red-flag emergency escalation protocols.</p>
+              </div>
+              <span class="github-project__link"><span>View on GitHub</span> <span>↗</span></span>
+            </a>
+
+            <!-- 3. Mini-GPT -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/Mini_-GPT" target="_blank" rel="noopener">
+              <span class="github-project__type">Generative AI &middot; Deep Learning</span>
+              <h3>Mini_-GPT</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">Python</span>
+                <span class="github-project-tag">PyTorch</span>
+                <span class="github-project-tag">Causal Self-Attention</span>
+                <span class="github-project-tag">CUDA</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Repository Overview</span>
+                <p>From-scratch PyTorch implementation of an autoregressive Generative Pre-trained Transformer language model. Explores multi-head attention, layer normalization, tokenization, and temperature sampling.</p>
+              </div>
+              <span class="github-project__link"><span>View on GitHub</span> <span>↗</span></span>
+            </a>
+
+            <!-- 4. Git Pulse Finder -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/Git-Pulse-Finder-Website" target="_blank" rel="noopener">
+              <span class="github-project__type">Developer Tool &middot; Ecosystem Analytics</span>
+              <h3>Git-Pulse-Finder-Website</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">JavaScript (ES2024)</span>
+                <span class="github-project-tag">GitHub REST API</span>
+                <span class="github-project-tag">Client Caching</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Repository Overview</span>
+                <p>Real-time GitHub profile explorer and developer scorecard. Queries repositories, commit frequencies, and language distributions with client-side caching to prevent rate-limit bottlenecks.</p>
+              </div>
+              <span class="github-project__link"><span>View on GitHub</span> <span>↗</span></span>
+            </a>
+
+            <!-- 5. OMNI Compression -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/OMNI-COMPRESSION-" target="_blank" rel="noopener">
+              <span class="github-project__type">Media Engine &middot; WebAssembly</span>
+              <h3>OMNI-COMPRESSION-</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">TypeScript</span>
+                <span class="github-project-tag">WebAssembly</span>
+                <span class="github-project-tag">Canvas 2D</span>
+                <span class="github-project-tag">Web Workers</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Repository Overview</span>
+                <p>Client-side image and video compression utility achieving 60–85% file size reduction with zero server uploads, leveraging Canvas 2D and multithreaded WASM workers.</p>
+              </div>
+              <span class="github-project__link"><span>View on GitHub</span> <span>↗</span></span>
+            </a>
+
+            <!-- 6. TypeFlow -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/Type_Flow-Project-" target="_blank" rel="noopener">
+              <span class="github-project__type">Productivity &middot; Offline App</span>
+              <h3>Type_Flow-Project-</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">TypeScript</span>
+                <span class="github-project-tag">Performance API</span>
+                <span class="github-project-tag">IndexedDB</span>
+                <span class="github-project-tag">Offline-First</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Repository Overview</span>
+                <p>Zero-latency offline typing speed and accuracy trainer with microsecond-level keystroke telemetry, error heatmaps, and LocalStorage progression tracking.</p>
+              </div>
+              <span class="github-project__link"><span>View on GitHub</span> <span>↗</span></span>
+            </a>
+
+            <!-- 7. VibeSync -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/Vibe_Sync" target="_blank" rel="noopener">
+              <span class="github-project__type">Music Intelligence &middot; Spotify API</span>
+              <h3>Vibe_Sync</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">TypeScript</span>
+                <span class="github-project-tag">Spotify API</span>
+                <span class="github-project-tag">OAuth 2.0 PKCE</span>
+                <span class="github-project-tag">Vector Clustering</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Repository Overview</span>
+                <p>Algorithmic playlist curation tool interfacing with the Spotify Web API. Computes acoustic distance matrices across song attributes to cluster tracks into harmonious mood playlists.</p>
+              </div>
+              <span class="github-project__link"><span>View on GitHub</span> <span>↗</span></span>
+            </a>
+
+          </div>
+        </div>
+        <button class="pop close vault-close" data-close="" style="--d:2" aria-label="Close">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"><path d="M4 4l34 34M38 4L4 38"></path></svg>
+        </button>
+      </section>
+
+
+            <!-- Web and developer tools -->
+      <section class="modal" data-modal="brand" aria-label="Web and developer tools">
+        <div class="pop github-projects">
+          <h2>Web &amp; Developer Tools</h2>
+          <p class="github-projects__intro">High-utility web applications, developer platforms, and media utilities &mdash; engineered with modern TypeScript and JavaScript for performance, privacy, and zero latency.</p>
+          <div class="github-project-grid">
+
+            <!-- Git Pulse Finder -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/Git-Pulse-Finder-Website" target="_blank" rel="noopener">
+              <span class="github-project__type">Developer Tool &middot; Web Application</span>
+              <h3>Git Pulse Finder</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">JavaScript ES2024</span>
+                <span class="github-project-tag">GitHub REST API</span>
+                <span class="github-project-tag">CSS3 Grid</span>
+                <span class="github-project-tag">Client Caching</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">What It Does</span>
+                <p>An instant developer discovery and repository analytics dashboard. Search any GitHub profile or organization to immediately view their language distributions, star ratios, commit activity, and top repositories.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">How I Made It &amp; Architecture</span>
+                <p>Constructed using pure modern JavaScript with asynchronous Promise.all fetch pipelines querying GitHub REST v3 endpoints. Features client-side in-memory caching to guard against rate limits, instantaneous client-side filtering, and fluid CSS3 Grid layouts.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Key Engineering Highlights</span>
+                <ul>
+                  <li>Zero external dependencies &mdash; sub-100ms load times and optimal bundle size</li>
+                  <li>Instant multi-criteria filtering across repositories by language, stars, and recency</li>
+                </ul>
+              </div>
+              <span class="github-project__link">View repository on GitHub <span>↗</span></span>
+            </a>
+
+            <!-- OMNI Compression -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/OMNI-COMPRESSION-" target="_blank" rel="noopener">
+              <span class="github-project__type">Media Engine &middot; Client-Side WASM</span>
+              <h3>OMNI Compression</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">TypeScript</span>
+                <span class="github-project-tag">HTML5 Canvas</span>
+                <span class="github-project-tag">WebAssembly</span>
+                <span class="github-project-tag">Web Workers</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">What It Does</span>
+                <p>A client-side media compression tool that reduces image and video file sizes by 60–85% while preserving visual clarity &mdash; keeping user media 100% private by executing entirely in the browser without server uploads.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">How I Made It &amp; Architecture</span>
+                <p>Engineered with TypeScript using the Canvas 2D API for bicubic scaling and quantization control. Integrated multithreaded WebAssembly workers for client-side video transcoding, preventing UI freezes, with memory management to prevent browser memory leaks.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Key Engineering Highlights</span>
+                <ul>
+                  <li>Complete client-side privacy &mdash; media never leaves the local machine</li>
+                  <li>Live split-screen before/after comparison slider and byte savings calculator</li>
+                </ul>
+              </div>
+              <span class="github-project__link">View repository on GitHub <span>↗</span></span>
+            </a>
+
+            <!-- TypeFlow -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/Type_Flow-Project-" target="_blank" rel="noopener">
+              <span class="github-project__type">Productivity &middot; Offline-First Desktop App</span>
+              <h3>TypeFlow</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">TypeScript</span>
+                <span class="github-project-tag">Performance API</span>
+                <span class="github-project-tag">IndexedDB</span>
+                <span class="github-project-tag">Event-Driven</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">What It Does</span>
+                <p>A distraction-free, offline-first typing performance utility designed to build typing velocity, muscle memory, and raw accuracy. Provides instant real-time telemetry including Net WPM, Gross WPM, keystroke latency, and mistake heatmaps.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">How I Made It &amp; Architecture</span>
+                <p>Developed an event-driven keystroke listener using the browser's performance.now() API for microsecond-accurate timing between keystrokes. Built tiered word generation algorithms and offline persistence via LocalStorage and IndexedDB to track historical typing progression.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Key Engineering Highlights</span>
+                <ul>
+                  <li>Microsecond keystroke interval telemetry capturing typing hesitation patterns</li>
+                  <li>100% offline-first architecture with zero network dependencies or tracking</li>
+                </ul>
+              </div>
+              <span class="github-project__link">View repository on GitHub <span>↗</span></span>
+            </a>
+
+            <!-- VibeSync -->
+            <a class="github-project" href="https://github.com/muffasernaeem302/Vibe_Sync" target="_blank" rel="noopener">
+              <span class="github-project__type">Music Tool &middot; Spotify Web API</span>
+              <h3>VibeSync</h3>
+              <div class="github-project-tags">
+                <span class="github-project-tag">TypeScript</span>
+                <span class="github-project-tag">Spotify API</span>
+                <span class="github-project-tag">OAuth 2.0 PKCE</span>
+                <span class="github-project-tag">Vector Clustering</span>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">What It Does</span>
+                <p>An intelligent music curation tool that connects to Spotify to extract acoustic features (valence, energy, tempo, danceability) from user tracks and automatically cluster libraries into harmonious, mood-aligned playlists.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">How I Made It &amp; Architecture</span>
+                <p>Integrated the Spotify Web API via client-side OAuth 2.0 PKCE. Developed multidimensional distance clustering across acoustic matrices to group complementary songs into distinct mood buckets with one-click batch playlist creation and deduplication.</p>
+              </div>
+              <div class="github-project-section">
+                <span class="github-project-section-title">Key Engineering Highlights</span>
+                <ul>
+                  <li>Zero-backend OAuth 2.0 PKCE authentication flow maintaining total security</li>
+                  <li>Multidimensional audio vector clustering into cohesive mood playlists</li>
+                </ul>
+              </div>
+              <span class="github-project__link">View repository on GitHub <span>↗</span></span>
+            </a>
+
+          </div>
+        </div>
+        <button class="pop close brand-close" data-close="" style="--d:2" aria-label="Close">
+          <svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"><path d="M4 4l34 34M38 4L4 38"></path></svg>
+        </button>
+      </section>
+
+      <!-- Instagram creator snapshot -->
+      <section class="modal" data-modal="camera" aria-label="Instagram creator profile snapshot">
+        <div class="pop social-snapshot">
+          <div class="social-snapshot__topline">
+            <span>CREATOR SNAPSHOT <span aria-hidden="true">·</span> INSTAGRAM</span>
+            <span>PUBLIC SNAPSHOT <span aria-hidden="true">·</span> 17 NOV 2026</span>
+          </div>
+
+          <header class="social-snapshot__profile">
+            <div class="social-snapshot__avatar">
+              <img src="https://avatars.githubusercontent.com/u/262732549?v=4" alt="Muffaser Naeem's profile portrait">
+            </div>
+            <div class="social-snapshot__identity">
+              <h2>ＭＵＦＦＡＳＥＲ</h2>
+              <p class="social-snapshot__handle">@muffaser.spawn</p>
+              <p class="social-snapshot__bio">Comsian’s 29 🎓 · Documenting life · surviving university 👾</p>
+            </div>
+            <div class="social-snapshot__aside">
+              <dl class="social-snapshot__stats">
+                <div><dd>480</dd><dt>followers</dt></div>
+                <div><dd>274</dd><dt>following</dt></div>
+                <div><dd>8</dd><dt>highlights</dt></div>
+              </dl>
+              <a class="social-snapshot__follow" href="https://www.instagram.com/muffaser.spawn/" target="_blank" rel="noopener noreferrer">
+                Follow on Instagram <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </header>
+
+          <section class="social-snapshot__section" aria-labelledby="socialHighlightsHeading">
+            <div class="social-snapshot__section-head">
+              <h3 id="socialHighlightsHeading">Story highlights</h3>
+              <span>08 SAVED STORIES</span>
+            </div>
+            <div class="social-snapshot__highlights">
+              <a href="https://www.instagram.com/stories/highlights/18065554217069598/" target="_blank" rel="noopener noreferrer" aria-label="View Moments highlight">
+                <span class="social-snapshot__highlight-cover is-moments" aria-hidden="true">✦</span><span>Moments</span>
+              </a>
+              <a href="https://www.instagram.com/stories/highlights/18116383070593169/" target="_blank" rel="noopener noreferrer" aria-label="View Growth highlight">
+                <span class="social-snapshot__highlight-cover is-growth" aria-hidden="true">↗</span><span>Growth</span>
+              </a>
+              <a href="https://www.instagram.com/stories/highlights/18154913695557984/" target="_blank" rel="noopener noreferrer" aria-label="View Work highlight">
+                <span class="social-snapshot__highlight-cover is-work" aria-hidden="true">W</span><span>WORK</span>
+              </a>
+              <a href="https://www.instagram.com/stories/highlights/17886344172389566/" target="_blank" rel="noopener noreferrer" aria-label="View Fits highlight">
+                <span class="social-snapshot__highlight-cover is-fits" aria-hidden="true">◈</span><span>Fits 🔥</span>
+              </a>
+              <a href="https://www.instagram.com/stories/highlights/18056749462801547/" target="_blank" rel="noopener noreferrer" aria-label="View Me highlight">
+                <span class="social-snapshot__highlight-cover is-me" aria-hidden="true">M</span><span>Me :)</span>
+              </a>
+              <a href="https://www.instagram.com/stories/highlights/18120095377441187/" target="_blank" rel="noopener noreferrer" aria-label="View Nature highlight">
+                <span class="social-snapshot__highlight-cover is-nature" aria-hidden="true">❋</span><span>Nature</span>
+              </a>
+              <a href="https://www.instagram.com/stories/highlights/18070340219437906/" target="_blank" rel="noopener noreferrer" aria-label="View QNA 2 highlight">
+                <span class="social-snapshot__highlight-cover is-qna" aria-hidden="true">?</span><span>QNA 2</span>
+              </a>
+              <a href="https://www.instagram.com/stories/highlights/18109047973540185/" target="_blank" rel="noopener noreferrer" aria-label="View out 'f twn highlight">
+                <span class="social-snapshot__highlight-cover is-travel" aria-hidden="true">↗</span><span>out 'f twn</span>
+              </a>
+            </div>
+          </section>
+
+          <section class="social-snapshot__section" aria-labelledby="socialPostsHeading">
+            <div class="social-snapshot__section-head">
+              <h3 id="socialPostsHeading">From the feed</h3>
+              <span>REELS <span aria-hidden="true">+</span> POSTS</span>
+            </div>
+            <div class="social-snapshot__posts">
+              <a class="social-snapshot__post" href="https://www.instagram.com/muffaser.spawn/reel/DfwvVImPW7z/" target="_blank" rel="noopener noreferrer" aria-label="Open Day 12 reel on Instagram">
+                <img src="minhngo-space/assets/instagram/day12.jpg" alt="Campus scene from Day 12 of Muffaser's hostel-life series" loading="lazy">
+                <span class="social-snapshot__post-type">▶ REEL</span>
+                <span class="social-snapshot__post-caption"><span>15 NOV · DAY 12</span><strong>Mid results are out ... and so are we 😓</strong></span>
+              </a>
+              <a class="social-snapshot__post" href="https://www.instagram.com/muffaser.spawn/p/DfNCmKpE8mb/" target="_blank" rel="noopener noreferrer" aria-label="Open October photo dump on Instagram">
+                <img src="minhngo-space/assets/instagram/october-dump.webp" alt="Friends together in a warm, candid October photo" loading="lazy">
+                <span class="social-snapshot__post-type">▧ POST</span>
+                <span class="social-snapshot__post-caption"><span>01 NOV · PHOTO DUMP</span><strong>New people, new places, and a fresh start.</strong></span>
+              </a>
+              <a class="social-snapshot__post" href="https://www.instagram.com/muffaser.spawn/reel/DfHycmXNq5t/" target="_blank" rel="noopener noreferrer" aria-label="Open Day 9 reel on Instagram">
+                <img src="minhngo-space/assets/instagram/day9.jpg" alt="Handwritten PUBG Mobile sign from a COMSATS campus reel" loading="lazy">
+                <span class="social-snapshot__post-type">▶ REEL</span>
+                <span class="social-snapshot__post-caption"><span>30 OCT · DAY 9</span><strong>Hostel life: PUBG Mobile × COMSATS 💀</strong></span>
+              </a>
+              <a class="social-snapshot__post" href="https://www.instagram.com/muffaser.spawn/reel/DfCgg4-NOoE/" target="_blank" rel="noopener noreferrer" aria-label="Open Day 8 reel on Instagram">
+                <img src="minhngo-space/assets/instagram/day8.jpg" alt="Muffaser talking to camera in his room" loading="lazy">
+                <span class="social-snapshot__post-type">▶ REEL</span>
+                <span class="social-snapshot__post-caption"><span>28 OCT · DAY 8</span><strong>Mids lab, game on ✨</strong></span>
+              </a>
+              <a class="social-snapshot__post" href="https://www.instagram.com/muffaser.spawn/reel/De6pPHdN_B_/" target="_blank" rel="noopener noreferrer" aria-label="Open Day 7 reel on Instagram">
+                <img src="minhngo-space/assets/instagram/day7.jpg" alt="A handwritten midterms note from a hostel-life reel" loading="lazy">
+                <span class="social-snapshot__post-type">▶ REEL</span>
+                <span class="social-snapshot__post-caption"><span>25 OCT · DAY 7</span><strong>Mids on the way — fielding set Hy.</strong></span>
+              </a>
+              <a class="social-snapshot__post" href="https://www.instagram.com/muffaser.spawn/reel/DemKt2-NyyG/" target="_blank" rel="noopener noreferrer" aria-label="Open Day 4 reel on Instagram">
+                <img src="minhngo-space/assets/instagram/day5.jpg" alt="A candid hostel-life moment with friends" loading="lazy">
+                <span class="social-snapshot__post-type">▶ REEL</span>
+                <span class="social-snapshot__post-caption"><span>17 OCT · DAY 04</span><strong>Documenting life as a hostelite 👾</strong></span>
+              </a>
+            </div>
+          </section>
+
+          <footer class="social-snapshot__footer">
+            <span>A hand-picked snapshot of public posts and saved stories.</span>
+            <a href="https://www.instagram.com/muffaser.spawn/" target="_blank" rel="noopener noreferrer">Explore the full profile <span aria-hidden="true">↗</span></a>
+          </footer>
+        </div>
+        <button class="pop close cam-close" data-close="" style="--d:1" aria-label="Close"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"><path d="M4 4l34 34M38 4L4 38"></path></svg></button>
+      </section>
+
+      <!-- Contact -->
+      <section class="modal" data-modal="contact" aria-label="Contact">
+        <div class="pop contact">
+          <p class="contact__row">GitHub: <a href="https://github.com/muffasernaeem302" target="_blank" rel="noopener">github.com/muffasernaeem302</a></p>
+          <p class="contact__row">LinkedIn: <a href="https://www.linkedin.com/in/muffaser-naeem-943475382/" target="_blank" rel="noopener">linkedin.com/in/muffaser-naeem-943475382</a></p>
+          <p class="contact__row">Location: Lahore, Pakistan</p>
+          <p class="contact__links"><a href="https://github.com/muffasernaeem302" data-link="github" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/muffaser-naeem-943475382/" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a></p>
+          <p class="contact__row contact__sign">Best,<br>Muffaser Naeem</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  /* ---------- profile links ---------- */
+  const LINKS = {
+    github: 'https://github.com/muffasernaeem302',
+    linkedin: 'https://www.linkedin.com/in/muffaser-naeem-943475382/',
+  };
+
+  (() => {
+    const PORTRAIT = document.documentElement.classList.contains('is-portrait');
+    const DESIGN_W = PORTRAIT ? 1080 : 1440;
+    const DESIGN_H = PORTRAIT ? 2160 : 900;
+    // the box keeps its 1440 × 900 artwork; in portrait it is shifted by (-180, 630)
+    const BOX_CENTER = PORTRAIT ? { x: 541, y: 1080 } : { x: 721, y: 450 };
+    // switching between the tall phone layout and the desk layout rebuilds the page
+    window.PORTRAIT_MQ.addEventListener?.('change', () => location.reload());
+
+    const root = document.documentElement;
+    const stage = document.getElementById('stage');
+    const box = document.getElementById('box');
+    const boxShadow = document.getElementById('boxShadow');
+    const lid = document.getElementById('lid');
+    const overlay = document.getElementById('overlay');
+    const toastEl = document.getElementById('toast');
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const wait = (ms) => new Promise((r) => setTimeout(r, reduceMotion ? 0 : ms));
+
+    /* ---------- scale the 1440×900 design to the window ---------- */
+    let view = { s: 1, x: 0 };
+    function fit() {
+      const vw = innerWidth, vh = innerHeight;
+      // scene: fill the window, anchored to the top so the nav is always visible.
+      // On wide or tall windows the zoom is capped so the whole box (and the
+      // menu above it) always fits; the 3D desk simply extends to the edges.
+      let s = Math.max(vw / DESIGN_W, vh / DESIGN_H);
+      if (!PORTRAIT) s = Math.min(s, vh / 800, vw / 1000);
+      const x = (vw - DESIGN_W * s) / 2;
+      const y = DESIGN_H * s < vh ? (vh - DESIGN_H * s) / 2 : 0;
+      stage.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+      view = { s, x, y };
+      window.__stageView = { s, x, y, vw, vh };
+      root.classList.toggle('stage-gaps-x', x > 0.5);
+      root.classList.toggle('stage-gaps-y', y > 0.5);
+      dispatchEvent(new Event('stagefit'));
+      // modals: fit entirely inside the window
+      // (popups keep their own 1440 × 900 frame)
+      const m = Math.min(vw / 1440, vh / 900);
+      root.style.setProperty('--s', m);
+      root.style.setProperty('--fx', `${(vw - 1440 * m) / 2}px`);
+      root.style.setProperty('--fy', `${(vh - 900 * m) / 2}px`);
+      // stage scale, so stage text can be sized in screen pixels
+      root.style.setProperty('--ps', s);
+    }
+    addEventListener('resize', fit);
+    fit();
+
+    // tall phone layout: the menu and the close link sit on the screen itself,
+    // at a readable size, instead of on the scaled desk
+    if (PORTRAIT) {
+      document.body.append(document.querySelector('.nav'), document.getElementById('rebox'));
+    }
+
+    /* ---------- desk items: physics-y nudges ---------- */
+    const deskItems = [...document.querySelectorAll('.desk-item')].map((el) => {
+      const cs = getComputedStyle(el);
+      const x = parseFloat(cs.getPropertyValue('--x'));
+      const y = parseFloat(cs.getPropertyValue('--y'));
+      const w = parseFloat(cs.getPropertyValue('--w'));
+      const h = parseFloat(cs.getPropertyValue('--h'));
+      // items cut by the screen edge or tucked under the box may only move
+      // in directions that keep the cut edge hidden: "minX,maxX,minY,maxY"
+      const [minX, maxX, minY, maxY] = (el.dataset.bounds || '-30,30,-30,30').split(',').map(Number);
+      const spin = el.dataset.spin === undefined ? 1 : Number(el.dataset.spin);
+      return { el, cx: x + w / 2, cy: y + h / 2, dx: 0, dy: 0, rot: 0, last: 0, minX, maxX, minY, maxY, spin };
+    });
+
+    const MAX_DRIFT = 30;
+    function nudge(item, dirX, dirY, dist, spin) {
+      const len = Math.hypot(dirX, dirY) || 1;
+      item.dx += (dirX / len) * dist;
+      item.dy += (dirY / len) * dist;
+      const drift = Math.hypot(item.dx, item.dy);
+      if (drift > MAX_DRIFT) {
+        item.dx *= MAX_DRIFT / drift;
+        item.dy *= MAX_DRIFT / drift;
+      }
+      item.dx = Math.max(item.minX, Math.min(item.maxX, item.dx));
+      item.dy = Math.max(item.minY, Math.min(item.maxY, item.dy));
+      item.rot = Math.max(-8, Math.min(8, item.rot + spin * item.spin));
+      item.el.style.setProperty('--dx', `${item.dx.toFixed(2)}px`);
+      item.el.style.setProperty('--dy', `${item.dy.toFixed(2)}px`);
+      item.el.style.setProperty('--rot', `${item.rot.toFixed(2)}deg`);
+    }
+
+    // cursor position + velocity in design coordinates
+    const pointer = { x: 0, y: 0, vx: 0, vy: 0 };
+    addEventListener('pointermove', (e) => {
+      const x = (e.clientX - view.x) / view.s;
+      const y = (e.clientY - view.y) / view.s;
+      pointer.vx = x - pointer.x;
+      pointer.vy = y - pointer.y;
+      pointer.x = x;
+      pointer.y = y;
+    });
+
+    deskItems.forEach((item) => {
+      item.el.querySelector('.hit').addEventListener('pointerenter', () => {
+        const now = performance.now();
+        if (now - item.last < 280) return;
+        item.last = now;
+        // push along the cursor's travel, or away from it if it barely moved
+        let dx = pointer.vx, dy = pointer.vy;
+        if (Math.hypot(dx, dy) < 1.5) {
+          dx = item.cx + item.dx - pointer.x;
+          dy = item.cy + item.dy - pointer.y;
+        }
+        const speed = Math.min(Math.hypot(pointer.vx, pointer.vy), 30);
+        item.el.classList.add('is-bumped');
+        nudge(item, dx, dy, 5 + speed * 0.25, (Math.random() - 0.5) * 5);
+        setTimeout(() => item.el.classList.remove('is-bumped'), 600);
+      });
+    });
+
+    function impact() {
+      deskItems.forEach((item) => {
+        const dx = item.cx - BOX_CENTER.x;
+        const dy = item.cy - BOX_CENTER.y;
+        const closeness = Math.max(0.35, 1 - Math.hypot(dx, dy) / 900);
+        nudge(item, dx, dy, (9 + Math.random() * 9) * closeness, (Math.random() - 0.5) * 7 * closeness);
+      });
+      stage.classList.add('is-shaking');
+      setTimeout(() => stage.classList.remove('is-shaking'), 400);
+    }
+
+    /* ---------- intro: the box drops onto the desk ---------- */
+    async function intro() {
+      // only the desk scene needs to be ready; give up waiting after 2.5s
+      const ready = Promise.all([
+        ...[...stage.querySelectorAll('img')].map((i) => i.decode().catch(() => {})),
+        document.fonts.ready,
+      ]);
+      await Promise.race([ready, wait(2500)]);
+      // the 3D desk (if it can run) gets a little longer to load
+      await Promise.race([window.scene3dReady, wait(1500)]);
+      await wait(250);
+      box.classList.add('is-dropping');
+      boxShadow.classList.add('is-dropping');
+      await wait(640);
+      impact();
+      await wait(560);
+      box.classList.remove('is-dropping');
+      box.classList.add('is-landed');
+    }
+    intro();
+
+    /* ---------- open the box ---------- */
+    let opened = false;
+    async function openBox() {
+      if (opened || closing) return;
+      opened = true;
+      lid.classList.add('is-leaving');
+      await wait(780);
+      box.classList.add('is-revealed');
+      document.body.classList.add('is-open');
+      await wait(1400);
+      // (skip if the box was closed again in the meantime)
+      if (opened && !closing) {
+        lid.hidden = true;
+        document.querySelectorAll('.obj').forEach((obj) => obj.classList.add('is-ready'));
+      }
+    }
+
+    /* ---------- close the box again: pack up, lid flies back on ---------- */
+    let closing = false;
+    async function closeBox() {
+      if (!opened || closing || busy) return;
+      closing = true;
+      const hadPopup = overlay.classList.contains('is-active');
+      closeAll();
+      closeDropdown();
+      document.body.classList.remove('is-open');
+      // objects stay put; the lid flies back over them
+      await wait(hadPopup ? 700 : 150); // let a picked-up object settle first
+      lid.hidden = false;
+      lid.classList.remove('is-leaving');
+      void lid.offsetWidth; // restart the animation
+      lid.classList.add('is-returning');
+      // once the lid hangs right above the box it hides everything inside,
+      // so the objects can be packed away unseen before it settles
+      await wait(860);
+      box.classList.remove('is-revealed');
+      document.querySelectorAll('.obj').forEach((o) => o.classList.remove('is-ready', 'is-hovered', 'is-taken', 'is-settling'));
+      await wait(390);
+      impact();
+      lid.classList.remove('is-returning');
+      opened = false;
+      closing = false;
+      lidHit.focus({ preventScroll: true });
+    }
+    document.getElementById('rebox').addEventListener('click', closeBox);
+    const homeBtn = document.getElementById('homeBtn');
+    homeBtn.addEventListener('click', closeBox);
+    homeBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); closeBox(); }
+    });
+    const lidHit = lid.querySelector('.hit');
+    lidHit.addEventListener('click', openBox);
+    lidHit.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBox(); }
+    });
+
+    /* ---------- toast ---------- */
+    let toastTimer;
+    function toast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add('is-shown');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove('is-shown'), 2200);
+    }
+
+    /* ---------- modals ---------- */
+    const MODALS = ['about', 'apps', 'projects', 'vault', 'brand', 'camera'];
+    const showcaseButtons = document.querySelectorAll('.project-showcase__app');
+    const showcaseTitle = document.getElementById('showcaseTitle');
+    const showcaseKind = document.getElementById('showcaseKind');
+    const showcaseSubtitle = document.getElementById('showcaseSubtitle');
+    const showcaseDoes = document.getElementById('showcaseDoes');
+    const showcaseHow = document.getElementById('showcaseHow');
+    const showcaseHighlights = document.getElementById('showcaseHighlights');
+    const showcaseCategory = document.getElementById('showcaseCategory');
+    const showcaseStack = document.getElementById('showcaseStack');
+    const showcaseRole = document.getElementById('showcaseRole');
+    const showcaseRepo = document.getElementById('showcaseRepo');
+
+    showcaseButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        showcaseButtons.forEach((item) => {
+          const selected = item === button;
+          item.classList.toggle('is-selected', selected);
+          item.setAttribute('aria-pressed', String(selected));
+        });
+        if (showcaseTitle) showcaseTitle.textContent = button.dataset.title;
+        if (showcaseKind) showcaseKind.textContent = button.dataset.kind;
+        if (showcaseSubtitle) showcaseSubtitle.textContent = button.dataset.subtitle || '';
+        if (showcaseDoes) showcaseDoes.textContent = button.dataset.does || '';
+        if (showcaseHow) showcaseHow.textContent = button.dataset.how || '';
+        if (showcaseHighlights) {
+          const rawHighlights = button.dataset.highlights || '';
+          const items = rawHighlights.split('|').filter(s => s.trim().length > 0);
+          showcaseHighlights.innerHTML = items.map(it => `<li>${it.trim()}</li>`).join('');
+        }
+        if (showcaseCategory) showcaseCategory.textContent = button.dataset.kind;
+        if (showcaseStack) showcaseStack.textContent = button.dataset.stack;
+        if (showcaseRole) showcaseRole.textContent = button.dataset.role || 'Lead Architecture & Engineering';
+        if (showcaseRepo) {
+          showcaseRepo.href = button.dataset.repo;
+          showcaseRepo.setAttribute('aria-label', `View ${button.dataset.title} project on GitHub`);
+        }
+      });
+    });
+    let takenObj = null;
+    let busy = false;
+
+    function showModal(name) {
+      overlay.classList.add('is-active');
+      document.querySelectorAll('.modal').forEach((m) => m.classList.remove('is-active'));
+      document.querySelectorAll('video').forEach((v) => v.pause());
+      const modal = document.querySelector(`[data-modal="${name}"]`);
+      modal.classList.remove('is-flipped');
+      modal.scrollTop = 0;
+      modal.classList.add('is-active');
+    }
+
+    function settle(obj) {
+      if (!obj) return;
+      obj.classList.add('is-settling');
+      obj.classList.remove('is-taken');
+      setTimeout(() => obj.classList.remove('is-settling'), 800);
+    }
+
+    function closeAll() {
+      overlay.classList.remove('is-active');
+      document.querySelectorAll('.modal').forEach((m) => m.classList.remove('is-active'));
+      document.querySelectorAll('video').forEach((v) => v.pause());
+      // put the lifted object back in the box (keep a reference: takenObj is cleared right away)
+      const obj = takenObj;
+      takenObj = null;
+      setTimeout(() => settle(obj), 150);
+    }
+
+    // pick the object up, then open what it stands for
+    async function take(key, sourceObj = null) {
+      if (busy) return;
+      busy = true;
+      closeDropdown();
+      const obj = sourceObj || document.querySelector(`.obj[data-key="${key}"]`);
+      if (!opened) {
+        await openBox();
+        await wait(1100);
+      }
+      if (takenObj && takenObj !== obj) settle(takenObj);
+      if (obj) {
+        obj.classList.remove('is-hovered');
+        obj.classList.add('is-taken');
+        takenObj = obj;
+      }
+      await wait(520);
+      if (MODALS.includes(key)) showModal(key);
+      busy = false;
+    }
+
+    document.querySelectorAll('.obj').forEach((obj) => {
+      const hit = obj.querySelector('.hit');
+      hit.addEventListener('click', () => take(obj.dataset.key, obj));
+      // touch: first tap shows the label, second tap opens
+      hit.addEventListener('pointerdown', (e) => {
+        // (the tall phone layout shows every label, so one tap opens)
+        if (PORTRAIT || e.pointerType !== 'touch' || obj.classList.contains('is-hovered')) return;
+        e.preventDefault();
+        document.querySelectorAll('.obj.is-hovered').forEach((o) => o.classList.remove('is-hovered'));
+        obj.classList.add('is-hovered');
+      });
+    });
+
+    document.querySelectorAll('[data-open]').forEach((btn) => {
+      btn.addEventListener('click', () => take(btn.dataset.open));
+    });
+
+    document.querySelectorAll('[data-close]').forEach((btn) => btn.addEventListener('click', closeAll));
+    overlay.addEventListener('click', (e) => {
+      // (on phones each popup is a full-screen sheet: tapping its empty space closes it)
+      if (e.target === overlay || e.target.classList.contains('modal')) closeAll();
+    });
+    addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { closeAll(); closeDropdown(); }
+    });
+
+    // About ⇄ Experience flip
+    const aboutModal = document.querySelector('[data-modal="about"]');
+    const profile = aboutModal.querySelector('.profile');
+    document.querySelectorAll('[data-flip]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        profile.classList.remove('is-turning');
+        void profile.offsetWidth;
+        profile.classList.add('is-turning');
+        aboutModal.classList.toggle('is-flipped', btn.dataset.flip === 'exp');
+      });
+    });
+    profile.addEventListener('animationend', (e) => {
+      if (e.animationName === 'flipLift') profile.classList.remove('is-turning');
+    });
+
+    // show profile links in the contact panel instead of navigating away
+    document.getElementById('contactLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeDropdown();
+      showModal('contact');
+    });
+
+    // links: filled from LINKS at the top of this script
+    document.querySelectorAll('[data-link]').forEach((a) => {
+      const url = LINKS[a.dataset.link];
+      if (url) a.href = url;
+      else a.addEventListener('click', (e) => { e.preventDefault(); toast('Link coming soon!'); });
+    });
+
+    /* ---------- nav dropdown + contact ---------- */
+    const projectsWrap = document.querySelector('.nav__projects');
+    const projectsToggle = document.getElementById('projectsToggle');
+    function closeDropdown() {
+      projectsWrap.classList.remove('is-open');
+      projectsToggle.setAttribute('aria-expanded', 'false');
+    }
+    projectsToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = projectsWrap.classList.toggle('is-open');
+      projectsToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    document.addEventListener('click', (e) => {
+      if (!projectsWrap.contains(e.target)) closeDropdown();
+    });
+
+  })();
+  </script>
+</body></html>
